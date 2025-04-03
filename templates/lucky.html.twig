@@ -3,7 +3,15 @@
 {% block title %}Magic number{% endblock %}
 
 {% block body %}
-    <h1>Magic number</h1>
-    <p>Welcome to my awesome magical homepage.</p>
-    <p>This is the current magic number: {{ number }}</p>
+    <h1>Vad hostar kvicksilvret?</h1>
+    <p>
+        Vad är det för väder på en slumpmässig plats på jorden?
+        Vi får fråga vår engelske metereolog.<br>
+
+        <span class="forcast"><img src="{{ icon }}">Today it's {{ weather }} in {{ location }}, the temp is {{ temp }}°C</span>
+    </p>
+    <p>        
+        Vilket väder dom har!
+    </p>
+
 {% endblock %}

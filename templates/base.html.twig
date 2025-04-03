@@ -14,14 +14,25 @@
         {% endblock %}
     </head>
     <body>
-        <nav>
-            <menu>
-                <li><a href="{{ path('me') }}">Me</a></li>
-                <li><a href="{{ path('about') }}">About</a></li>
-                <li><a href="{{ path('report') }}">Report</a></li>
-            </menu>
-        </nav>
+        <header>
+            <h2>MVC</h2>
+            <nav>
+                <menu>
+                    <li><a href="{{ path('me') }}">Me</a></li>
+                    <li><a href="{{ path('about') }}">About</a></li>
+                    <li><a href="{{ path('report') }}">Report</a></li>
+                </menu>
+            </nav>
+            <div class="icons">
+
+            </div>
+        </header>
+
         {% block body %}
         {% endblock %}
+
+        <footer>
+            
+        </footer>
     </body>
 </html>

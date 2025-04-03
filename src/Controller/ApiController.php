@@ -22,6 +22,11 @@ class ApiController
 
 
     #[Route("/api/quote", name:"quote")]
+    /**
+     * Serves a quote from Alfred Hitchcock by converting a JSON file into an associated array,
+     * picking a random quote that gets turned back to JSON and presented. 
+     * @return JsonResponse
+     */
     public function jsonQuotes(): Response
     {
         $number = random_int(0, 52);
