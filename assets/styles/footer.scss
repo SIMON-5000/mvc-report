@@ -1,0 +1,60 @@
+@use 'helpers' as *;
+
+footer{
+  height: fit-content;
+  @include flex-center(row);
+  // justify-content: space-between;
+  gap: 1em;
+  background-color: $col-yellow;
+  color: $main-text-color;
+  font-family: $font;
+  border-top: $border;
+  svg {
+    height: 1.4rem;
+    vertical-align: middle;
+    margin: $space-s;
+  }
+}
+
+nav,
+menu {
+margin: 0;
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 1em;
+font-weight: 800;
+font-size: 1.4rem;
+li {
+    list-style: none;
+}
+}
+
+nav {
+  margin: 0;
+  height: 100%;
+}
+
+a {
+  color: #325a1c;
+  text-transform: lowercase;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.mvc {
+padding: 0 1rem;
+border-right: $border;
+}
+
+.icons {
+  height: 100%;
+  padding: 0 1rem;
+  border-left: $border;
+  @include flex-center(row);
+  gap: 10px;
+  svg {
+    height: 1.4rem;
+  }
+}

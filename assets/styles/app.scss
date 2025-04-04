@@ -1,0 +1,28 @@
+@use '../../node_modules/modern-normalize/modern-normalize.css';
+@use 'helpers' as *;
+@use 'typography';
+@use 'header';
+@use 'footer';
+@use 'weather';
+@use 'responsitivity';
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+body {
+    background-color: $background;
+    margin: 0;
+    padding: 0;
+    border: 3px solid $main-text-color;
+    min-height: 100vh;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+
+/* Color Theme Swatches in Hex */
+.Nudeli-1-hex { color: #F2E635; }
+.Nudeli-2-hex { color: #F2C335; }
+.Nudeli-3-hex { color: #F28705; }
+.Nudeli-4-hex { color: #591202; }
+.Nudeli-5-hex { color: #D93E30; }
+.green { color: #325a1c; }

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+<html lang="sv">
 <html>
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
         {% endblock %}
 
         {% block javascripts %}
@@ -15,7 +17,7 @@
     </head>
     <body>
         <header>
-            <h2>MVC</h2>
+            <h1 class="mvc">mvc</h1>
             <nav>
                 <menu>
                     <li><a href="{{ path('me') }}">Me</a></li>
@@ -24,15 +26,16 @@
                 </menu>
             </nav>
             <div class="icons">
-
+                <a href="https://dbwebb.se/kurser/mvc-v2" title="Read more"><div>{{ ux_icon('lucide:book-open-text') }}</div></a>
+                <a href="https://github.com/SIMON-5000/mvc-report" title="Github for this project">{{ ux_icon('lucide:github') }}</a>
             </div>
         </header>
-
+        <main>    
         {% block body %}
         {% endblock %}
-
+        </main>
         <footer>
-            
+            <div>Klassisk footer med dynamiskt datum - &copy; <script>document.write(new Date().getFullYear())</script> -</div> <div>kontakt/sign-up:<label for="contact">{{ ux_icon('lucide:mail') }}<input type="mail" id="contact"></label></div>
         </footer>
     </body>
 </html>

@@ -17,7 +17,7 @@ class LuckyController extends AbstractController
         // $key = $_ENV['API_KEY'];
         // var_dump($key);
 
-        $locations = ['Stockholm', 'Ouagadougou', 'Durban', 'Jönköping', 'Karachi', 'Caracas', 'Canberra', 'Wellington', 'Freetown', 'Manilla'];
+        $locations = ['Stockholm', 'Ouagadougou', 'Durban', 'Karachi', 'Caracas', 'Canberra', 'Wellington', 'Freetown', 'Manilla'];
         $number = random_int(0, count($locations) - 1);
         
         $location = $locations[$number];

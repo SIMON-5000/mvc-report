@@ -1,0 +1,11 @@
+@use 'helpers' as *;
+
+.forcast{
+  @include flex-center(column);
+  border: 5px solid skyblue;
+  border-radius: $space-m;
+  background-color: #ffffff80;
+  max-width: 15rem;
+  margin: 0 auto;
+  padding: $space-s
+}

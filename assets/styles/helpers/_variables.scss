@@ -1,0 +1,28 @@
+$base-font-size: 1.2rem;
+$base-line-height: 1.4;
+$magic-number: 1.68rem;
+
+$space-s: calc($magic-number / 2);
+$space-m: $magic-number;
+$space-l: calc($magic-number * 2);
+
+$font: 'josefin sans', sans-serif;
+$base-font-weight: 300 !default;
+$header-font-weight: 600 !default;
+
+$background: #f5f2ea !default;
+$main-text-color: #325a1c !default;
+$col-yellow: #F2E635 !default;
+
+
+$brighten: #ffffff10;
+$darken: #00000030;
+
+$col-orange: #F28705;
+$col-red: #D93E30;
+$col-red-dark: #591202;
+$col-yellow-punch: #F2C335;
+$purple: #969; 
+
+$border: 3px solid #325a1c;
+

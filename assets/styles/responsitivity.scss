@@ -1,0 +1,11 @@
+@use 'helpers' as *;
+
+@media (max-width: 700px) {
+  header{
+    height: unset;
+    menu,
+    .icons {
+      flex-direction: column;
+    }
+  }
+}

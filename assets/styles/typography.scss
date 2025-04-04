@@ -1,0 +1,39 @@
+@use 'helpers' as *;
+
+html {
+  font-size: 100%;
+  text-wrap: balance;
+  hyphens: auto;
+}
+
+body {
+  font-family: $font;
+  font-weight: $base-font-weight;
+  font-size: $base-font-size;
+  color: $main-text-color;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font;
+  font-weight: $header-font-weight;
+  text-align: center;
+  margin-bottom: $magic-number;
+}
+
+p {
+  font-family: 'Merriweather';
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  margin-bottom: $base-font-size * $base-line-height;
+  letter-spacing: 0.02em;
+  padding: 0 8px;
+}
+
+.main > h2:first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
