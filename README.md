@@ -4,10 +4,12 @@ This is a work in progress, to clone or contribute follow these guidelines.
 
 ![MVC-project image](.img/mvc.png)
 
+
+Live demo: https://www.student.bth.se/~sidr24/dbwebb-kurser/mvc/me/report/public
 ___
 
 ## How it's made
-This is what I have used and could be seen as a minimum requirement if you don't know otherwise.
+This is what I have used and could be seen as a minimum requirement.
 
 ___
 
@@ -63,7 +65,7 @@ brew install symfony-cli/tap/symfony-cli
 
 </details>
 
-Then we can start the Symfony local web server, like this:
+Then we can start the Symfony local web server like this:
 
 ```bash
 symfony server:start
@@ -73,12 +75,11 @@ symfony server:start
 ___
 
 ### API-KEY
-I hid my API-key for the random-weather service, but you can get your own at:
-https://weatherstack.com/signup/free
-and create the file public/data/API_KEY.php
+I hid my API-key for the random-weather service, but you can: 
+1. get your own at https://weatherstack.com/signup/free
+2.  create the file public/data/API_KEY.php
+3. paste in:
 ```php
 $key = '<Paste your key here>';
 ```
-
-Live demo: https://www.student.bth.se/~sidr24/dbwebb-kurser/mvc/me/report/public
 
