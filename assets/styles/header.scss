@@ -25,6 +25,7 @@ menu {
   font-size: 1.4rem;
   li {
       list-style: none;
+      margin: 0;
   }
 }
 
@@ -33,7 +34,7 @@ nav {
   height: 100%;
 }
 
-a {
+header a {
   color: #325a1c;
   text-transform: lowercase;
   margin: 0;

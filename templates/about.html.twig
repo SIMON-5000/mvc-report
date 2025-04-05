@@ -3,9 +3,25 @@
 {% block title %}About{% endblock %}
 
 {% block body %}
-    <h1 class="bg">About</h1>
-    <p>An image which can be clicked on.</p>
-    <a href="{{ asset('img/glider.svg') }}">
-        <img src="{{ asset('img/glider.svg') }}" alt="">
-    </a>
+    <h1 class="bg">Om MVC</h1>
+    <p>
+        MVC är ett klassiskt designmönster inom mjukvaru- och webbutveckling där man delar upp uppgifter i tre kategorier:
+        Modell, vy och kontroller.
+    </p>
+    <ul>
+        <li>Modellen hanterar data och större logiska strukturer.
+        <li>Vyerna visar användaren informationen.
+        <li>Kontrollerna hanterar kopplingen mellan modell och vy.
+    </ul>
+    <p>
+        Att dela upp saker på detta vis är god sed inom programmering, <q>separation of concerns</q>
+        det underlättar utbyggnad och underhåll av webbplatsen eller applikationen och gör allt mer översiktligt och förutsägbart.
+    </p>
+    <figure>
+    <img src="{{ asset('img/mvc.png') }}" alt="The trinity of the MVC pattern" height="300">
+    <figcaption>
+        Bilden är lite missvisande, gud bör inte vara inblandad i detta, då har man gjort fel.
+        Men den illustrerar separation of concerns på ett bra sätt, och kanske skapar man en gudomligt bra webbapp!?
+    </figcaption>
+    </figure>
 {% endblock %}

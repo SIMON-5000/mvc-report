@@ -1,0 +1,18 @@
+@use 'helpers' as *;
+
+.me{
+  aspect-ratio: 1.5;
+  background: right / contain no-repeat url('../images/2025_02_22.jpg');
+  // @include flex-center(column);
+  border: 5px solid $main-text-color;
+  // border-radius: $space-m;
+  margin: 0 auto;
+  padding: $space-s;
+
+}
+
+.me-h2 {
+  color: $main-text-color;
+  background-color: $col-yellow;
+  margin-top: 5%;
+}

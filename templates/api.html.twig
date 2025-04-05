@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Magic number{% endblock %}
+
+{% block body %}
+    <h1>API</h1>
+    <p>
+        Below is a list of available JSON Routes. Enjoy!
+    </p>
+
+    <ul>
+        <li>Random Alfred Hitchkock quotes => <a href="{{ path('quote') }}">/api/quote</a></li>
+    </ul>
+
+{% endblock %}

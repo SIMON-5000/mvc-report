@@ -8,18 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController
 {
-    #[Route("/api")]
-    public function allApi(): Response
-    {
-        // $router = $this->get('router');
-        // $routeList = $router->getRouteCollection()->all();
-        $routeList = [
-            'quote' => '/api/quote'
-        ];
-
-        return new JsonResponse($routeList);
-    }
-
 
     #[Route("/api/quote", name:"quote")]
     /**

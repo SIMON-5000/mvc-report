@@ -4,6 +4,7 @@
 @use 'header';
 @use 'footer';
 @use 'weather';
+@use 'me';
 @use 'responsitivity';
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
@@ -18,6 +19,19 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
+main {
+  max-width: 68rem;
+  margin: 1rem auto;
+}
+
+figure{
+  display: table;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: bottom;
+}
 
 /* Color Theme Swatches in Hex */
 .Nudeli-1-hex { color: #F2E635; }

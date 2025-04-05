@@ -2,7 +2,7 @@
 
 html {
   font-size: 100%;
-  text-wrap: balance;
+  // text-wrap: balance;
   hyphens: auto;
 }
 
@@ -37,3 +37,6 @@ p {
   letter-spacing: 0.1em;
 }
 
+li {
+  margin-bottom: $space-s;
+}
