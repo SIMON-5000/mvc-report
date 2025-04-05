@@ -1,0 +1,15 @@
+@use 'helpers' as *;
+
+.report-menu {
+  height: fit-content;
+  justify-content: center;
+  background-color: $col-yellow;
+  padding: $space-s;
+  margin: $space-l;
+  
+  a {
+    color: $main-text-color;
+    font-size: 1rem;
+  }
+  
+}
