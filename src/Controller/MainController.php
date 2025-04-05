@@ -29,7 +29,7 @@ class MainController extends AbstractController
         return $this->render('about.html.twig');
     }
 
-    #[Route("/api")]
+    #[Route("/api", name: "api")]
     public function allApi(): Response
     {
         return $this->render('api.html.twig');
