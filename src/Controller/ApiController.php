@@ -8,17 +8,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController
 {
-
     #[Route("/api/quote", name:"quote")]
     /**
      * Serves a quote from Alfred Hitchcock by converting a JSON file into an associated array,
-     * picking a random quote that gets turned back to JSON and presented. 
+     * picking a random quote that gets turned back to JSON and presented.
      * @return JsonResponse
      */
     public function jsonQuotes(): Response
     {
         $number = random_int(0, 52);
-        $quotes = json_decode(file_get_contents( 'data/quotes.json'), true);
+        $quotes = json_decode(file_get_contents('data/quotes.json'), true);
         // var_dump($quotes['quotes']);
         // var_dump(array_keys($quotes));
         $quote = $quotes['quotes'][$number];
@@ -37,9 +36,9 @@ class ApiController
 
         // RAW JSON DATA TO PRINT
         // return new JsonResponse($quotes);
-        
+
         // Here we first prettify the json data, JSON_PRETTY_PRINT
-        
+
         $response = new JsonResponse($quote);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT

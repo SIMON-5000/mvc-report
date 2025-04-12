@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Pig Game{% endblock %}
+
+{% block main %}
+<h1>Roll a dice</h1>
+
+<p>You rolled {{ num_dice }} dice.</p>
+
+<ul style="list-style: none; font-size: 5rem; display: flex; flex-wrap: wrap;">
+    {% for die in diceRoll %}
+        <li>{{ die }}</li>
+    {% endfor %}
+</ul>
+
+<p>Try to roll 
+    <a href="{{ path('test_roll_many_dice', {num: 5}) }}">5</a>
+    or 
+    <a href="{{ path('test_roll_many_dice', {num: 10}) }}">10</a>
+    dices.
+</p>
+
+{% endblock %}

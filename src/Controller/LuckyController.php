@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 class LuckyController extends AbstractController
 {
     #[Route("/lucky", name: "lucky")]
@@ -19,12 +18,12 @@ class LuckyController extends AbstractController
 
         $locations = ['Stockholm', 'Ouagadougou', 'Durban', 'Karachi', 'Caracas', 'Canberra', 'Wellington', 'Freetown', 'Manilla'];
         $number = random_int(0, count($locations) - 1);
-        
+
         $location = $locations[$number];
-        
+
         $url = 'http://api.weatherstack.com/current?access_key='.$key.'&query='.$location.'&units=m';
 
-        $res = json_decode(file_get_contents( $url), true);
+        $res = json_decode(file_get_contents($url), true);
         // var_dump($res);
 
         $data = [
@@ -37,5 +36,3 @@ class LuckyController extends AbstractController
         return $this->render('lucky.html.twig', $data);
     }
 }
-
-
