@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Jeg{% endblock %}
+
+{% block main %}
+    <h1>Sessionens innehåll</h1>
+{#  strval(value), value|string, klurigt
+
+{% for key, value in session %}
+        {{ key }} : {{ ~ value ~ }}
+    {% endfor %}
+
+#}
+    <pre>
+        {{ dump(session) }}
+    </pre>
+
+    <form method="post" action="">
+    <p>
+        <input
+            type="submit"
+            name="sessionDelete"
+            value="sessionDelete"
+            onClick="this.form.action='{{ path('session_delete') }}';"
+        >
+{% endblock %}
