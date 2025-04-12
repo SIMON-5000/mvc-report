@@ -4,18 +4,18 @@
 {% block title %}Pig Game{% endblock %}
 
 {% block main %}
-<h1>Pig game [PLAYING]</h1>
+<h1>Pig game</h1>
 <p>You are playing with {{ pigDice }} dice.</p>
 <ul style="list-style: none; font-size: 5rem; display: flex; flex-wrap: wrap;">
     {% for die in dicehand %}
         <li>{{ die }}</li>
     {% endfor %}
 </ul>
-<p>Round: {{ pigRound }}</p>
-<p>Total: {{ pigTotal }}</p>
+<p>Points this round: {{ pigRound }}</p>
+<p>Total points: {{ pigTotal }}</p>
 
 <p>Roll the dice or save the points you have.</p>
-<p>You have rolled {{ roundRolls }} this round, and a total of {{ totalRolls }} in this game.</p>
+<p>You have made {{ roundRolls }} rolls this round, and a total of {{ totalRolls }} rolls in this game.</p>
 
 <form method="post" action="">
     <p>

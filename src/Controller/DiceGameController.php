@@ -126,13 +126,15 @@ class DiceGameController extends AbstractController
         $session->set("pig_round_rolls", 1);
         $session->set("pig_total_rolls", $totalRolls + 1);
 
+        if ($gameTotal + $roundTotal >= 100) {
+            return $this->redirectToRoute('pig_winner');
+        }
+
         $this->addFlash(
             'notice',
             'Your round was saved to the total!'
         );
-        if ($gameTotal + $roundTotal >= 100) {
-            return $this->redirectToRoute('pig_winner');
-        }
+        
         return $this->redirectToRoute('pig_play');
     }
 

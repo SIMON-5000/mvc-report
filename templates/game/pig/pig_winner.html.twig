@@ -6,6 +6,19 @@
 {% block main %}
 <h1>Pig game WINNER</h1>
 
-{{ include('flash.html.twig') }}
+<h2>Well done!</h2>
+<p>You have reached 100 (well actually {{ pigTotal }}) in {{ totalRolls }} rolls.</p>
+
+
+<form method="post" action="">
+    <p>
+        <input
+            type="submit"
+            name="restart"
+            value="Restart"
+            onClick="this.form.action='{{ path('pig_init_get') }}';this.form.method='get';"
+        >
+    </p>
+</form>
 
 {% endblock %}
