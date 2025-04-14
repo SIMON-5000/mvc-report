@@ -1,6 +1,7 @@
 <?php
 namespace App\Card;
 
+use PhpParser\Node\Expr\Cast\Array_;
 use Symfony\Bundle\MakerBundle\Str;
 
 /**
@@ -22,8 +23,8 @@ class Card
         $this->rank = $rank;
     }
 
-    public function getValue(): string
+    public function getValue(): Array
     {
-        return "$this->suit . $this->rank";
+        return ["suit" => $this->suit, "rank" => $this->rank];
     }
 }
