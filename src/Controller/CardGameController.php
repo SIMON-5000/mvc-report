@@ -46,11 +46,18 @@ class CardGameController extends AbstractController
         return $this->render('game/card/deck.html.twig', $data);
     }
 
-    // #[Route("/card/deck/shuffle", name: "card_deck_shuffle", methods: ['GET'])]
-    // public function deckShuffle(): Response
-    // {
-    //     return $this->render('game/card/deck_shuffle.html.twig');
-    // }
+    #[Route("/card/deck/shuffle", name: "card_deck_shuffle", methods: ['GET'])]
+    public function deckShuffle(): Response
+    {
+        $deck = new CardsDeck();
+        $deck->shuffle();
+        $data = [
+            'deckSize' => $deck->deckSize(),
+            'deck' => $deck->getCardsDeck()
+        ];
+
+        return $this->render('game/card/deck_shuffle.html.twig', $data);
+    }
 
     // #[Route("/card/deck/shuffle", name: "card_deck_shuffle_post", methods: ['POST'])]
     // public function deckShuffleCallback(): Response
