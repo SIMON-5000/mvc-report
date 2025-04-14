@@ -37,9 +37,6 @@ class CardGraphic extends Card
     'K' => 'E'
     ];
 
-    protected $suit;
-    protected $rank;
-
 
     /**
      * Calls inherited constructor.
@@ -49,16 +46,6 @@ class CardGraphic extends Card
     public function __construct(string $suit, string $rank)
     {
         parent::__construct($suit, $rank);
-    }
-
-
-    /**
-     * Returns a string representation of suit and rank.
-     * @return array{rank: mixed, suit: mixed}
-     */
-    public function getValue(): Array
-    {
-        return ["suit" => $this->suit, "rank" => $this->rank];
     }
 
 

@@ -23,6 +23,9 @@ class Card
 
     public function getValue(): Array
     {
-        return ["suit" => $this->suit, "rank" => $this->rank];
+        return [
+            "suit" => $this->suit,
+            "rank" => $this->rank
+        ];
     }
 }
