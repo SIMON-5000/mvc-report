@@ -15,8 +15,28 @@ class CardGraphic extends Card
      * https://www.compart.com/en/unicode/block/U+1F0A0
      * @var array The four suits.
      */
-    private $suits = ['spades' => 'A', 'hearts' => 'B', 'diamonds' => 'C', 'clubs' => 'D'];
-    private $ranks = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'D', 'E'];
+    private $suits = [
+        'spades' => 'A',
+        'hearts' => 'B',
+        'diamonds' => 'C',
+        'clubs' => 'D'
+    ];
+    private $ranks = 
+    ['A' => '1',
+    '2' => '2',
+    '3' => '3',
+    '4' => '4',
+    '5' => '5',
+    '6' => '6',
+    '7' => '7',
+    '8' => '8',
+    '9' => '9',
+    '10' => 'A',
+    'J' => 'B',
+    'Q' => 'D',
+    'K' => 'E'
+    ];
+
     protected $suit;
     protected $rank;
 
@@ -52,7 +72,7 @@ class CardGraphic extends Card
      */
     public function getAsCard(): string
     {
-        $unicodeCard = "U+1F0" . $this->suits[$this->suit] . $this->ranks[$this->rank - 1];
+        $unicodeCard = "U+1F0" . $this->suits[$this->suit] . $this->ranks[$this->rank];
         return mb_chr(hexdec($unicodeCard), 'UTF-8');
     }
 }

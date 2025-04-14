@@ -5,13 +5,11 @@
 {% block main %}
 <h1>Spelkort</h1>
 
-<p>Detta är en uppsättning sidor för att visa spelkort.</p>
-<p>{{ card.suit }} {{ card.rank }}</p>
-<p class="playing-card">{{ graphic }}</p>
-<p class="">Deck size: {{ deckSize }}</p>
+<p>Samtliga kort i leken:</p>
 <p class="playing-card">
     {% for card in deck %}
         {{ card }}
     {% endfor %}
 </p>
+<p class="">Leken har {{ deckSize }} kort.</p>
 {% endblock %}

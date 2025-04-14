@@ -1,5 +1,8 @@
+@use 'helpers' as *;
+
 .playing-card {
   font-size: 8rem;
+  margin-top: $space-s;
 }
 
 .playing-card-black {
