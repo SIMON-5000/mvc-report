@@ -13,27 +13,39 @@ class CardGraphic extends Card
      * Summary of suits
      * A B C D E Represents ranks: '10' 'Jack' 'Knight' 'Queen' 'King'. I will not be using Knight
      * https://www.compart.com/en/unicode/block/U+1F0A0
-     * @var array
+     * @var array The four suits.
      */
     private $suits = ['spades' => 'A', 'hearts' => 'B', 'diamonds' => 'C', 'clubs' => 'D'];
     private $ranks = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'D', 'E'];
     protected $suit;
     protected $rank;
 
+
+    /**
+     * Calls inherited constructor.
+     * @param string $suit Cards suit.
+     * @param string $rank Cards rank.
+     */
     public function __construct(string $suit, string $rank)
     {
         parent::__construct($suit, $rank);
     }
 
+
+    /**
+     * Returns a string representation of suit and rank.
+     * @return array{rank: mixed, suit: mixed}
+     */
     public function getValue(): Array
     {
         return ["suit" => $this->suit, "rank" => $this->rank];
     }
-    
+
+
     /**
      * Concatenates a string with the Unicode-value.
-     * Then uses mb_chr https://www.php.net/manual/en/function.mb-chr.php
-     * mb_char takes a "codepoint" as argument, it works if I convert it to type hexadecimal
+     * Uses mb_chr https://www.php.net/manual/en/function.mb-chr.php
+     * mb_char takes a "codepoint" as argument, it works if I convert my string to type hexadecimal.
      * https://stackoverflow.com/questions/1365583/how-to-get-the-character-from-unicode-code-point-in-php
      * 
      * @return bool|string Returns a graphic representation of a playing card.

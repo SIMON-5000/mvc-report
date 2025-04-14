@@ -1,3 +1,13 @@
-.playing-card{
-  font-size: 5rem;
+.playing-card {
+  font-size: 8rem;
+}
+
+.playing-card-black {
+  @extend .playing-card;
+  color: #201e1e;
+}
+
+.playing-card-red {
+  @extend .playing-card;
+  color: #be1010;
 }
