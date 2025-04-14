@@ -1,9 +1,8 @@
 <?php
 namespace App\Controller;
 
-use App\Dice\Dice;
-use App\Dice\DiceGraphic;
-use App\Dice\DiceHand;
+use App\Card\Card;
+// use App\Card\CardDeck;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +18,11 @@ class CardGameController extends AbstractController
     #[Route("/card", name: "card_home")]
     public function home(): Response
     {
+        $card = new Card('h', 'q');
+        $data = [
+            'card' => $card
+        ];
+
         return $this->render('game/card/card.html.twig');
     }
 
