@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dra ett kort{% endblock %}
+
+{% block main %}
+<h1>Spelkort</h1>
+<form method="post" action="">
+    <p>
+        <input
+            type="submit"
+            name="draw"
+            value="Dra ett kort"
+            onClick="this.form.action='{{ path('draw_post') }}';"
+        >
+    </p>
+</form>
+
+{{ include('flash.html.twig') }}
+{% if drawn %}
+    <p>Du drog:
+        <span class="playing-card">
+            {% for card in drawn %}
+                {{ card }}
+            {% endfor %}
+        </span>
+    </p>
+{% endif %}
+<p>Det är {{ deckSize }} kort kvar i leken:</p>
+<p class="playing-card">
+    {% for card in deck %}
+        {{ card }}
+    {% endfor %}
+</p>
+<p>Removed cards: 
+    {% for card in removed %}
+        {{ card }}
+    {% endfor %}
+</p>
+{% endblock %}

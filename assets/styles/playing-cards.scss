@@ -2,7 +2,9 @@
 
 .playing-card {
   font-size: 8rem;
-  margin-top: $space-s;
+  margin-top: $space-m;
+  padding-top: $space-s;
+  vertical-align: top;
 }
 
 .playing-card-black {

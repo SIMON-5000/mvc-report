@@ -20,15 +20,17 @@ class CardGameController extends AbstractController
     #[Route("/card", name: "card_home")]
     public function home(): Response
     {
-        $card = new Card('h', 'q');
+        $card = new Card('h', 'Hej');
         $cardGr = new CardGraphic('hearts', 'K');
         $deck = new CardsDeck();
+        $deck->fillDeck();
         $deck->shuffle();
         $data = [
             'card' => $card->getValue(),
             'graphic' => $cardGr->getAsCard(),
+            'graphicVal' => $cardGr->getValue(),
             'deckSize' => $deck->deckSize(),
-            'deck' => $deck->getCardsDeck()
+            'deck' => $deck->getCardsFromDeck()
         ];
 
         return $this->render('game/card/card.html.twig', $data);
@@ -38,9 +40,10 @@ class CardGameController extends AbstractController
     public function deck(): Response
     {
         $deck = new CardsDeck();
+        $deck->fillDeck();
         $data = [
             'deckSize' => $deck->deckSize(),
-            'deck' => $deck->getCardsDeck()
+            'deck' => $deck->getCardsFromDeck()
         ];
 
         return $this->render('game/card/deck.html.twig', $data);
@@ -50,10 +53,11 @@ class CardGameController extends AbstractController
     public function deckShuffle(): Response
     {
         $deck = new CardsDeck();
+        $deck->fillDeck();
         $deck->shuffle();
         $data = [
             'deckSize' => $deck->deckSize(),
-            'deck' => $deck->getCardsDeck()
+            'deck' => $deck->getCardsFromDeck()
         ];
 
         return $this->render('game/card/deck_shuffle.html.twig', $data);
@@ -65,18 +69,94 @@ class CardGameController extends AbstractController
     //     return $this->redirectToRoute('card_deck_shuffle');
     // }
 
-    // #[Route("/card/deck/draw", name: "card_draw")]
-    // public function draw(): Response
-    // {
-    //     return $this->render('game/card/draw.html.twig');
-    // }
+    #[Route("/card/deck/draw", name: "card_draw")]
+    public function draw(
+        SessionInterface $session
+        ): Response
+    {
+        if (!$session->get("current_deck") || $session->get("current_deck")->deckSize() == 0) {
+            $deck = new CardsDeck();
+            $deck->fillDeck();
+            $deck->shuffle();
+            $session->set("current_deck", $deck);
+        }
 
-    // #[Route("/card/deck/draw//{num<\d+>}", name: "card_draw_many", methods: ['GET'])]
-    // #[Route("/card/deck/draw:number", name: "card_deck_shuffle", methods: ['GET'])]
-    // public function deckShuffle(): Response
-    // {
-    //     return $this->render('game/card/deck_draw_many.html.twig');
-    // }
+        if (!$session->get("removed_cards")) {
+            $session->set("removed_cards", []);
+        } 
+        
+        if ($session->get("last_removed")) {
+            $drawnCardVal = $session->get("last_removed");
+            // $drawnCard = new CardGraphic($drawnCardVal['suit'], $drawnCardVal['rank']) ?? null;
+            $deckOfLastRemoved = new CardsDeck();
+            $deckOfLastRemoved->createFromArray($drawnCardVal);
+        }
+
+        $deck = $session->get("current_deck");
+        $removedCardsList = $session->get("removed_cards");
+        $allRemovedCards = new CardsDeck();
+        $allRemovedCards->createFromArray($removedCardsList);
+
+
+        $data = [
+            'deckSize' => $deck->deckSize(),
+            'deck' => $deck->getCardsFromDeck(),
+            'removed' => isset($allRemovedCards) ? $allRemovedCards->getCardsFromDeck() : null,
+            'drawn' => isset($deckOfLastRemoved) ? $deckOfLastRemoved->getCardsFromDeck() : null
+        ];    
+
+        return $this->render('game/card/draw.html.twig', $data);
+    }
+
+    #[Route("/card/deck/draw/post", name: "draw_post", methods: ['POST'])]
+    public function drawCallback(SessionInterface $session): Response
+    {
+        $deck = $session->get("current_deck");
+        $removedCards = $session->get("removed_cards");
+        $drawn = $deck->draw();
+
+        $removedCards = array_merge($removedCards, $drawn);
+        $session->set("removed_cards", $removedCards);
+        $session->set("last_removed", $drawn);
+
+        if ($deck->deckSize() == 0) {
+            $session->set("last_removed", null);
+            $session->set("removed_cards", []);
+            $this->addFlash(
+                'notice',
+                'Sista kortet, ny giv!'
+            );
+        }
+
+        return $this->redirectToRoute('card_draw');
+    }
+
+
+    #[Route("/card/deck/draw/{num<\d+>}", name: "card_draw_many", methods: ['GET'])]
+    public function drawMany(
+        int $num,
+        SessionInterface $session
+        ): Response
+    {
+        $deck = $session->get("current_deck");
+        $removedCards = $session->get("removed_cards");
+
+        if ($num > $deck->deckSize()) {
+            $this->addFlash(
+                'warning',
+                'Du kan inte dra fler kort än det fins i leken!'
+            );
+            return $this->redirectToRoute('card_draw');
+        }
+
+        $drawn = $deck->draw($num);
+        $removedCards = array_merge($removedCards, $drawn);
+        $session->set("removed_cards", $removedCards);
+        $session->set("last_removed", $drawn);
+
+
+        return $this->redirectToRoute('card_draw');
+    }
 
     // Skapa en sida card/deck/draw som drar ett kort från kortleken och visar upp det. Visa även antalet kort som är kvar i kortleken.
 

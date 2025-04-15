@@ -1,0 +1,20 @@
+@use 'helpers' as *;
+
+.flash {
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: $space-s;
+  border-radius: $space-s;
+  text-align: center;
+}
+
+.flash-notice {
+  @extend .flash;
+  background-color: $col-yellow-punch;
+}
+
+.flash-warning {
+ @extend .flash;
+ background-color: $col-red;
+ color: #000;
+}
