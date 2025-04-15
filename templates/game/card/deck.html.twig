@@ -6,10 +6,11 @@
 <h1>Spelkort</h1>
 
 <p>Samtliga kort i leken:</p>
-<p class="playing-card">
     {% for card in deck %}
-        {{ card }}
+        <p class="playing-card">
+            {{ card }}
+        </p>
     {% endfor %}
-</p>
+
 <p class="">Leken har {{ deckSize }} kort.</p>
 {% endblock %}

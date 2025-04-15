@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Card;
 
 use App\Card\CardGraphic;
@@ -18,7 +19,7 @@ class CardsDeck
     public function fillDeck(): void
     {
         foreach ($this->suits as $suit) {
-            foreach ($this->ranks as $rank){
+            foreach ($this->ranks as $rank) {
                 $card = new CardGraphic($suit, $rank);
                 $this->add($card);
                 // var_dump($this->deck);
@@ -62,6 +63,18 @@ class CardsDeck
         return $drawn;
     }
 
+    public function drawCard($number = 1): array
+    {
+        $drawn = [];
+
+        for ($count = 0; $count < $number; $count++) {
+            $idx = random_int(0, $this->deckSize() - 1);
+            $removedCard = array_splice($this->deck, $idx, 1);
+            array_push($drawn, $removedCard[0]);
+        }
+
+        return $drawn;
+    }
 
     // public function saveDeck(): array
     // {

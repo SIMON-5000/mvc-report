@@ -11,14 +11,7 @@
             <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
         {% endblock %}
 
-        {% block javascripts %}
-            {# Standard: #}
-            <!-- {# <script src="..."></script> #} -->
-            {# <!-- Uses encore: --> #}
-            {{ encore_entry_script_tags('app') }}
-            {# <!-- Asset mapper: --> #}
-            {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
-        {% endblock %}
+
     </head>
     <body>
         <header>
@@ -46,5 +39,13 @@
         <footer>
             <div>Klassisk footer med dynamiskt datum - &copy; <script>document.write(new Date().getFullYear())</script></div> <div>kontakt/sign-up:<label for="contact">{{ ux_icon('lucide:mail') }}<input type="mail" id="contact"></label></div>
         </footer>
+        {% block javascripts %}
+            {# Standard: #}
+            <!-- {# <script src="..."></script> #} -->
+            {# <!-- Uses encore: --> #}
+            {{ encore_entry_script_tags('app') }}
+            {# <!-- Asset mapper: --> #}
+            {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
+        {% endblock %}
     </body>
 </html>

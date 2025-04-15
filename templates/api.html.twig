@@ -7,9 +7,24 @@
     <p>
         Below is a list of available JSON Routes. Enjoy!
     </p>
-
+    {{ include('flash.html.twig') }}
     <ul>
-        <li>Random Alfred Hitchkock quotes => <a href="{{ path('quote') }}">/api/quote</a></li>
+        <li class="api_links">Random Alfred Hitchkock quotes => <a href="{{ path('quote') }}">/api/quote</a></li>
+        <li>A representation of a deck of cards => <a href="{{ path('api_deck') }}">/api/quote</a></li>
+        <li>
+            Shuffle the cards => <form method="post" action="" class="inline"><input type="submit" name="shuffle" value="Get shuffled deck" onClick="this.form.action='{{ path('api_deck_shuffle_post') }}';"></form>
+        </li>
+        <li>
+            Draw a card => <form method="post" action="" class="inline"><input type="submit" name="draw_one" value="Draw a card" onClick="this.form.action='{{ path('api_deck_draw_post') }}';"></form>
+        </li>
+        <li>
+            <fieldset>
+                <legend>Draw multiple cards</legend>
+                <form method="post" action="" class="inline">
+                    <input name="num-cards" type="number" min="1" max="{{ maxValue }}" required>
+                    <input type="submit" name="draw_many" value="Draw cards" onClick="this.form.action='{{ path('api_deck_draw_many_handler') }}';">
+                </form>
+        </li>
     </ul>
 
 {% endblock %}

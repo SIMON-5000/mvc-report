@@ -18,19 +18,19 @@
 {{ include('flash.html.twig') }}
 {% if drawn %}
     <p>Du drog:
-        <span class="playing-card">
             {% for card in drawn %}
+            <span class="playing-card">
                 {{ card }}
+            </span>
             {% endfor %}
-        </span>
     </p>
 {% endif %}
 <p>Det är {{ deckSize }} kort kvar i leken:</p>
-<p class="playing-card">
     {% for card in deck %}
+    <p class="playing-card">
         {{ card }}
+    </p>
     {% endfor %}
-</p>
 <p>Removed cards: 
     {% for card in removed %}
         {{ card }}

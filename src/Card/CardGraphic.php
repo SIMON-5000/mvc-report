@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Card;
 
 use PhpParser\Node\Expr\Cast\Array_;
@@ -21,21 +22,21 @@ class CardGraphic extends Card
         'diamonds' => 'C',
         'clubs' => 'D'
     ];
-    private $ranks = 
-    ['A' => '1',
-    '2' => '2',
-    '3' => '3',
-    '4' => '4',
-    '5' => '5',
-    '6' => '6',
-    '7' => '7',
-    '8' => '8',
-    '9' => '9',
-    '10' => 'A',
-    'J' => 'B',
-    'Q' => 'D',
-    'K' => 'E'
-    ];
+    private $ranks =
+        ['A' => '1',
+        '2' => '2',
+        '3' => '3',
+        '4' => '4',
+        '5' => '5',
+        '6' => '6',
+        '7' => '7',
+        '8' => '8',
+        '9' => '9',
+        '10' => 'A',
+        'J' => 'B',
+        'Q' => 'D',
+        'K' => 'E'
+        ];
 
 
     /**
@@ -54,7 +55,7 @@ class CardGraphic extends Card
      * Uses mb_chr https://www.php.net/manual/en/function.mb-chr.php
      * mb_char takes a "codepoint" as argument, it works if I convert my string to type hexadecimal.
      * https://stackoverflow.com/questions/1365583/how-to-get-the-character-from-unicode-code-point-in-php
-     * 
+     *
      * @return bool|string Returns a graphic representation of a playing card.
      */
     public function getAsCard(): string

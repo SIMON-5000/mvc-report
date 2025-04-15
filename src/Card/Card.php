@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Card;
 
 use PhpParser\Node\Expr\Cast\Array_;
@@ -21,7 +22,7 @@ class Card
         $this->rank = $rank;
     }
 
-    public function getValue(): Array
+    public function getValue(): array
     {
         return [
             "suit" => $this->suit,

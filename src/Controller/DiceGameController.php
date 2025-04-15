@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Dice\Dice;
@@ -34,8 +35,7 @@ class DiceGameController extends AbstractController
     public function initCallback(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         // echo("SETTING SESSION...");
         $numDice = $request->request->get('num_dice');
 
@@ -58,9 +58,8 @@ class DiceGameController extends AbstractController
 
     #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
     public function play(
-    SessionInterface $session
-    ): Response
-    {
+        SessionInterface $session
+    ): Response {
         // Gets hand object from session
         $dicehand = $session->get("pig_dicehand");
 
@@ -79,8 +78,7 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/roll", name: "pig_roll", methods: ['POST'])]
     public function roll(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $roundRolls = $session->get("pig_round_rolls");
         $totalRolls = $session->get("pig_total_rolls");
         $hand = $session->get("pig_dicehand");
@@ -106,7 +104,7 @@ class DiceGameController extends AbstractController
         $session->set("pig_round", $roundTotal + $round);
         $session->set("pig_round_rolls", $roundRolls + 1);
         $session->set("pig_total_rolls", $totalRolls + 1);
-        
+
         // remember to REDIRECT, not render.
         return $this->redirectToRoute('pig_play');
     }
@@ -114,8 +112,7 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/save", name: "pig_save", methods: ['POST'])]
     public function save(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $roundTotal = $session->get("pig_round");
         $gameTotal = $session->get("pig_total");
         $totalRolls = $session->get("pig_total_rolls");
@@ -134,15 +131,14 @@ class DiceGameController extends AbstractController
             'notice',
             'Your round was saved to the total!'
         );
-        
+
         return $this->redirectToRoute('pig_play');
     }
 
     #[Route("/game/pig/winner", name: "pig_winner", methods: ['GET'])]
     public function winner(
-    SessionInterface $session
-    ): Response
-    {
+        SessionInterface $session
+    ): Response {
         $data = [
             "pigTotal" => $session->get("pig_total"),
             "totalRolls" => $session->get("pig_total_rolls"),

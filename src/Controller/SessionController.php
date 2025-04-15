@@ -18,12 +18,11 @@ class SessionController extends AbstractController
     #[Route('/session', name: "session_home")]
     public function session(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         // Gets all attributes we've set to SessionInterface.
         $sessionContent = $session->all();
         $data = [
-            'session'=> $sessionContent
+            'session' => $sessionContent
         ];
 
         return $this->render('session/session.html.twig', $data);
@@ -37,5 +36,5 @@ class SessionController extends AbstractController
         $session->invalidate();
 
         return $this->redirectToRoute('session_home');
-    }    
+    }
 }

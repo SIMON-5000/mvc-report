@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -30,8 +31,16 @@ class MainController extends AbstractController
     }
 
     #[Route("/api", name: "api")]
-    public function allApi(): Response
+    public function allApi(SessionInterface $session): Response
     {
-        return $this->render('api.html.twig');
+        $data = [
+            "maxValue" => 52
+        ];
+
+        if ($session->get("api_deck")) {
+            $data["maxValue"] = $session->get("api_deck")->deckSize();
+        }
+
+        return $this->render('api.html.twig', $data);
     }
 }

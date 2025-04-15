@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Card\Card;
@@ -20,8 +21,8 @@ class CardGameController extends AbstractController
     #[Route("/card", name: "card_home")]
     public function home(): Response
     {
-        $card = new Card('h', 'Hej');
-        $cardGr = new CardGraphic('hearts', 'K');
+        $card = new Card('Hjärter', 'Kung');
+        $cardGr = new CardGraphic('spades', 'A');
         $deck = new CardsDeck();
         $deck->fillDeck();
         $deck->shuffle();
@@ -72,8 +73,7 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/draw", name: "card_draw")]
     public function draw(
         SessionInterface $session
-        ): Response
-    {
+    ): Response {
         if (!$session->get("current_deck") || $session->get("current_deck")->deckSize() == 0) {
             $deck = new CardsDeck();
             $deck->fillDeck();
@@ -83,8 +83,8 @@ class CardGameController extends AbstractController
 
         if (!$session->get("removed_cards")) {
             $session->set("removed_cards", []);
-        } 
-        
+        }
+
         if ($session->get("last_removed")) {
             $drawnCardVal = $session->get("last_removed");
             // $drawnCard = new CardGraphic($drawnCardVal['suit'], $drawnCardVal['rank']) ?? null;
@@ -103,7 +103,7 @@ class CardGameController extends AbstractController
             'deck' => $deck->getCardsFromDeck(),
             'removed' => isset($allRemovedCards) ? $allRemovedCards->getCardsFromDeck() : null,
             'drawn' => isset($deckOfLastRemoved) ? $deckOfLastRemoved->getCardsFromDeck() : null
-        ];    
+        ];
 
         return $this->render('game/card/draw.html.twig', $data);
     }
@@ -136,8 +136,7 @@ class CardGameController extends AbstractController
     public function drawMany(
         int $num,
         SessionInterface $session
-        ): Response
-    {
+    ): Response {
         $deck = $session->get("current_deck");
         $removedCards = $session->get("removed_cards");
 
@@ -157,9 +156,5 @@ class CardGameController extends AbstractController
 
         return $this->redirectToRoute('card_draw');
     }
-
-    // Skapa en sida card/deck/draw som drar ett kort från kortleken och visar upp det. Visa även antalet kort som är kvar i kortleken.
-
-    // Skapa en sida card/deck/draw/:number som drar :number kort från kortleken och visar upp dem. Visa även antalet kort som är kvar i kortleken.
 
 }
