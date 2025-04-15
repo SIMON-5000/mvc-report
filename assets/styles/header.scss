@@ -59,3 +59,8 @@ header a {
     height: 1.4rem;
   }
 }
+
+.divider {
+  border-left: $border;
+  padding-left: $space-s;
+}

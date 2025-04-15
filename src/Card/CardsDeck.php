@@ -56,7 +56,7 @@ class CardsDeck
         for ($count = 0; $count < $number; $count++) {
             $idx = random_int(0, $this->deckSize() - 1);
             $removedCard = array_splice($this->deck, $idx, 1);
-            $drawn += $removedCard[0]->getValue();
+            array_push($drawn, $removedCard[0]->getValue());
         }
 
         return $drawn;

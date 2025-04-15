@@ -45,4 +45,17 @@ class ApiController
         );
         return $response;
     }
+
+    // #[Route("/api/deck", name:"api_deck")]
+    // #[Route("/api/deck/shuffle", name:"api_deck_shuffle")]
+    // #[Route("/api/deck/draw", name:"api_deck_draw")]
+    // #[Route("/api/deck/draw/{num<\d+>}", name:"api_deck_draw_many")]
 }
+
+// Skapa en route GET api/deck som returnerar en JSON struktur med hela kortleken sorterad per färg och värde.
+
+// Skapa en route POST api/deck/shuffle som blandar kortleken och därefter returnerar en JSON struktur med kortleken. Den blandade kortleken sparas i sessionen.
+
+// Skapa route POST api/deck/draw och POST api/deck/draw/:number som drar 1 eller :number kort från kortleken och visar upp dem i en JSON struktur samt antalet kort som är kvar i kortleken. Kortleken sparas i sessionen så om man anropar dem flera gånger så minskas antalet kort i kortleken.
+
+// [OPTIONELLT] Skapa en route POST api/deck/deal/:players/:cards som delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått i en JSON struktur. Visa även antalet kort som är kvar i kortleken.
