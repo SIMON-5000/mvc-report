@@ -1,9 +1,8 @@
-{% extends "base.html.twig" %}
+{% extends "game/card/card_template.html.twig" %}
 
 {% block title %}Dra ett kort{% endblock %}
 
-{% block main %}
-<h1>Spelkort</h1>
+{% block article %}
 <form method="post" action="">
     <p>
         <input
@@ -14,7 +13,7 @@
         >
     </p>
 </form>
-
+<p>För att dra flera kort lägg till valfri siffra i addressfältet efter "draw/"</a></p>
 {{ include('flash.html.twig') }}
 {% if drawn %}
     <p>Du drog:
@@ -25,7 +24,10 @@
             {% endfor %}
     </p>
 {% endif %}
-<p>Det är {{ deckSize }} kort kvar i leken:</p>
+<fieldset>
+    <legend>
+        <p>Det är {{ deckSize }} kort kvar i leken:</p>
+    </legend>
     {% for card in deck %}
     <p class="playing-card">
         {{ card }}
@@ -36,4 +38,5 @@
         {{ card }}
     {% endfor %}
 </p>
+</fieldset>
 {% endblock %}

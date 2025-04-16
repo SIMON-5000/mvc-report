@@ -1,9 +1,8 @@
-{% extends "base.html.twig" %}
+{% extends "game/card/card_template.html.twig" %}
 
-{% block title %}Pig Game{% endblock %}
+{% block title %}Sorterad Kortlek{% endblock %}
 
-{% block main %}
-<h1>Spelkort</h1>
+{% block article %}
 
 <p>Samtliga kort i leken:</p>
     {% for card in deck %}
