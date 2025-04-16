@@ -7,7 +7,72 @@
     <h1>Rapporter från moment</h1>
     <nav class="report-menu">
         <a href="#kmom01">kmom01</a>
+        <a href="#kmom02">kmom02</a>
     </nav>
+    <article class="kmom 02" id="kmom01">
+        <h2>KMOM-02</h2>
+        <h3>- Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</h3>
+        <p>
+            Arv är när en klass baseras på en annan klass och ärver egenskaper och metoder. 
+            Kanske har men en klass för frukt med egenskaper som färg, storlek och metoder som ät(). 
+            Detta är egenskaper som passar på såväl äpple som apelsin (både äpple och apelsin har 
+            en "is-a" relation till frukt), men i apelsinfallet behöver man till exempel bygga ut 
+            den med metoden skala().
+        </p>
+        <p>
+            Komposition handlar om det förhållande två klasser har till varandra. Låt säga att klassen äpple har en annan klass; kärnhus Om man raderar äpplet så försvinner kärnhuset. Den kan bara existera som en del av detta äpple.
+            Om det dock skulle gå att plocka ut sagda kärnhus och sätta i ett annat äpple, eller om det fyller en funktion på egen hand så är relationen en aggregation. I båda fallen är det fråga om en "has-a"-relation.
+        </p>
+        <p>
+            Interface är som en förberedelse, eller ett löfte om senare implementation.
+            Låt säga att frukten skall säljas, då måste varje klass ha visaPris(), men priset beräknas olika,
+            per styck, per kilo eller per meter (i fallet banan). Vi kan då implementera ett interface som kräver
+            att funktionen fins, men säger inget om hur den ser ut.
+            Det verkar bra om man är många som jobbar på ett projekt, eller som en minneslapp till sig själv
+            för att t.ex. skapa förutsägbarhet i ett API.
+        </p>
+        <p>
+            Traits möjliggör att man kan dela mindre delar av en klass eller en separat PHP-fil.
+            Detta kan komma väl till pass för en klass som hanterar mer generella uppgifter som också kan
+            användas i andra klasser, men man behöver inte ärva hela klassen.
+            Metoden skala() i fruktexemplet ovan kunde passa som trait. Traits kan också anpassas i klassen som
+            importerar dem så även visaPris() kunde fungera.
+        </p>
+        <h3>
+            - Berätta om din implementation från uppgiften. Hur löste du uppgiften,
+            är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?
+        </h3>
+        <p>
+            Efter att ha gjort övningen med spelet "pig" hade jag en bra grund, men det är en omfattande uppgift
+            så det tog tid. Tid är en bristvara och arbetet blev upphackat i många korta sejourer.
+            En konsekvens av detta är att jag sparar min kortlek som ett objekt, medan jag sparar borttagna kort
+            som som strängrepresentationer i en associativ array. Min hjärna är kanske kvar i OOPython-kursen där
+            vi jobbade på liknande vis. Jag tycker det är bra för att jag testar två vettiga sätt att spara dem på.
+            Men om det vore ett jobb och inte en läroprocess så hade det varit märkligt. För övrigt har jag för mycket
+            kod i routerna, kunde byggt fler metoder i card- och deck-klasserna samt kanske gjort en separat klass
+            för att hantera kortlekens logistik.
+        </p>
+        <h3>    
+            - Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?
+        </h3>
+        <p>
+            Det är fortfarande tidigt, men det verkar vara ett vettigt ramverk och ett bra system med MVC.
+            Jag har tänkt för lite på hur jag skall separera koden. Det har främst varit fokus på att få saker att fungera, men framöver vill jag bli bättre på att följa MVC-principerna mer konsekvent
+        </p>
+        <h3> - Vilken är din TIL för detta kmom?</h3>
+        <p>
+            Vad sägs om det här lilla vidundret?
+        </p>
+            <pre><code>if (/1F0[A|D]./gm.test(card.innerHTML.trim().codePointAt(0).toString(16).toUpperCase()))</code></pre>
+        <p>
+            Fult va!? Jag använde unicode-spelkort och konkatenerade ihop strängar i php för att rendera dem.
+            För att ändra färg (röda och svarta kort)) valde jag mellan olika metoder. "JS blir ändå enklast"
+            tänkte jag. Det var lite värre än jag trodde. innerHTML var av någon anledning en serie mellanslag
+            och själva symbolen mitt i, så jag fick konvertera tillbaka den till liknande unicode format och
+            jämföra med regex för att få ett "enkelt" sorteringssystem. Spännande att skutta ner en kort vända
+            i RegEx-träsket också.
+        </p>
+    </article>
     <article class="kmom 01" id="kmom01">
         <h2>KMOM-01</h2>
         <p>
