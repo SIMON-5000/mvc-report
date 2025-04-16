@@ -4,8 +4,10 @@
   display: inline-block;
   font-size: 8rem;
   margin-top: $space-m;
-  padding-top: $space-s;
+  padding: 0;
   vertical-align: top;
+  // text-shadow: 1px 1px 5px $darken;
+  // -webkit-text-fill-color: transparent;
 }
 
 .playing-card-black {
@@ -16,4 +18,26 @@
 .playing-card-red {
   @extend .playing-card;
   color: #be1010;
+}
+
+.uml {
+  float: right;
+  padding-left: $space-s;
+}
+
+.card-menu {
+  @include flex-center(row);
+  // list-style: symbols("♠");
+  list-style: none;
+  font-weight: 600;
+  justify-content: space-evenly;
+  margin-bottom: $space-l;
+  border: $border;
+  li{
+    margin: $space-s;
+  }
+  a {
+    text-decoration-thickness: 2px;
+  }
+  
 }

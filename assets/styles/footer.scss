@@ -4,6 +4,7 @@ footer{
   height: fit-content;
   @include flex-center(row);
   // justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1em;
   background-color: $col-yellow;
   color: $main-text-color;

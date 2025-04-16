@@ -42,3 +42,10 @@ figcaption {
 .inline {
   display: inline;
 }
+
+pre {
+  overflow-x: auto;
+  display: block;
+  margin: $space-s;
+  max-width: 90vw;
+}

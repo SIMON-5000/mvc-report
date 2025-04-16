@@ -40,3 +40,8 @@ p {
 li {
   margin-bottom: $space-s;
 }
+
+a,
+a:visited {
+  color: $main-text-color;
+}
