@@ -1,19 +1,19 @@
-{% extends "base.html.twig" %}
+{% extends "game/card/card_template.html.twig" %}
 
-{% block title %}Pig Game{% endblock %}
+{% block title %}Spelkort{% endblock %}
 
-{% block main %}
-<h1>Spelkort</h1>
-
-<p>Detta är en uppsättning sidor för att visa spelkort.</p>
-<ul class="">
-    <li class=""><a href="{{ path('card_deck') }}">Kortlek</a></li>
-    <li class=""><a href="{{ path('card_deck_shuffle') }}">Blanda din kortlek</a></li>
-    <li class=""><a href="{{ path('card_draw') }}">Dra ett kort</a></li>
-    <li class="">För att dra flera kort lägg till valfri siffra (kortlekens storlek eller lägre) efter "/card/deck/draw/" t.ex: <a href="{{ path('card_draw', {num: 7}) }}">7</a> </li>
-</ul>
-
-<p class="playing-card">{{ graphic }}</p>
+{% block article %}
+<article>
+    <h2>Kodstruktur</h2>
+    <p>
+        <img class="uml" src="{{ asset('img/mvc_card_uml.png') }}" alt="Ett UML-diagram för de kortrelaterade klasserna" height="350">
+        Bakom kort och lek ligger tre klasser, Card, CardGraphic och CardsDeck.
+        CardsGraphic ärver Card och lägger till en metod för att representera kortet med en unicodesymbol.
+        CardsDeck kan skapa kort - en full lek eller färre, den kan dra kort, blanda leken och den håller också koll på sin storlek med mer. Då korten kan dras och
+        existera utanför leken är deras förhållande en aggregation.
+    </p>
+</article>
+{# <p class="playing-card">{{ graphic }}</p> #}
 
 {# <p class="playing-card">
     {% for card in deck %}
