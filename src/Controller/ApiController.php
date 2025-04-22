@@ -50,6 +50,11 @@ class ApiController extends AbstractController
         return $response;
     }
 
+    /**
+     * Gets the current deck from sessions, or make a new if none is there/empty.
+     * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
+     * @return \App\Card\CardsDeck
+     */
     private function getDeck(SessionInterface $session): CardsDeck
     {
         $deck = $session->get("api_deck");
@@ -128,6 +133,14 @@ class ApiController extends AbstractController
     public function apiDeckDrawManyPost(int $num, SessionInterface $session): Response
     {
         $deck = $this->getDeck($session);
+
+        if ($num > $deck->deckSize()) {
+            $this->addFlash(
+                'warning',
+                'Du kan inte dra fler kort än det fins i leken!'
+            );
+            return $this->redirectToRoute('api');
+        }
 
         $drawn = $deck->draw($num);
 
