@@ -11,7 +11,7 @@ class LuckyController extends AbstractController
     #[Route("/lucky", name: "lucky")]
     public function number(): Response
     {
-        include 'data/API_KEY.php';
+        $key = include __DIR__ . '/../../public/data/API_KEY.php';
         // Med enviroment variables, best practice. ".env.local" ?
         // $key = $_ENV['API_KEY'];
         // var_dump($key);
@@ -22,9 +22,18 @@ class LuckyController extends AbstractController
         $location = $locations[$number];
 
         $url = 'http://api.weatherstack.com/current?access_key='.$key.'&query='.$location.'&units=m';
-
-        $res = json_decode(file_get_contents($url), true);
-        // var_dump($res);
+        $weatherRepport =  file_get_contents($url);
+        
+        if(!$weatherRepport) {
+            $weatherRepport = "";
+        }
+        $res = json_decode($weatherRepport, true) ?? [
+            'current' => [
+                'weather_description' => ['No weather found'],
+                'weather_icons' => [''],
+                'temperature' => ''
+                ]
+            ];
 
         $data = [
             'location' => $location,

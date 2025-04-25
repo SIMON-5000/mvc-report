@@ -13,15 +13,18 @@ use Symfony\Bundle\MakerBundle\Str;
  */
 class Card
 {
-    protected $suit;
-    protected $rank;
+    protected string $suit;
+    protected string $rank;
 
     public function __construct(string $suit, string $rank)
     {
         $this->suit = $suit;
         $this->rank = $rank;
     }
-
+    /**
+     * Returns associative array of cards string representation.
+     * @return array{rank: string, suit: string}
+     */
     public function getValue(): array
     {
         return [

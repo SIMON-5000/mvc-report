@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\CardsDeck;
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,11 +21,17 @@ class ApiController extends AbstractController
      */
     public function jsonQuotes(): Response
     {
+        $quoteContent = file_get_contents('data/quotes.json');
+        if ($quoteContent == false) {
+            throw new \RuntimeException("Quotes not found");
+        }
+        /** @var array{quotes: array<string>} */
+        $quotes = json_decode($quoteContent, true);
+
         $number = random_int(0, 52);
-        $quotes = json_decode(file_get_contents('data/quotes.json'), true);
-        // var_dump($quotes['quotes']);
-        // var_dump(array_keys($quotes));
         $quote = $quotes['quotes'][$number];
+
+        // ?? ["quotes"=>"Could not get quotes"]
 
         // Returning JSON data:
 
@@ -48,7 +55,7 @@ class ApiController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
-    }
+    }   
 
     /**
      * Gets the current deck from sessions, or make a new if none is there/empty.

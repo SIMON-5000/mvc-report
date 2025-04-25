@@ -1,0 +1,127 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Cannot call method deckSize\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/ApiController.php
+
+		-
+			message: '#^Cannot call method getValues\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/ApiController.php
+
+		-
+			message: '#^Method App\\Controller\\ApiController\:\:getDeck\(\) should return App\\Card\\CardsDeck but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/ApiController.php
+
+		-
+			message: '#^Cannot call method deckSize\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 4
+			path: src/Controller/CardGameController.php
+
+		-
+			message: '#^Cannot call method draw\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: src/Controller/CardGameController.php
+
+		-
+			message: '#^Cannot call method getCardsFromDeck\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/CardGameController.php
+
+		-
+			message: '#^Parameter \#1 \$cardsList of method App\\Card\\CardsDeck\:\:createFromArray\(\) expects array\<array\{suit\: string, rank\: string\}\>, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Controller/CardGameController.php
+
+		-
+			message: '#^Parameter \#1 \.\.\.\$arrays of function array_merge expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Controller/CardGameController.php
+
+		-
+			message: '#^Binary operation "\+" between mixed and \(float\|int\) results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Controller/DiceGameController.php
+
+		-
+			message: '#^Binary operation "\+" between mixed and 1 results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 3
+			path: src/Controller/DiceGameController.php
+
+		-
+			message: '#^Binary operation "\+" between mixed and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Controller/DiceGameController.php
+
+		-
+			message: '#^Cannot call method getString\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/DiceGameController.php
+
+		-
+			message: '#^Cannot call method getValues\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/DiceGameController.php
+
+		-
+			message: '#^Cannot call method roll\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/DiceGameController.php
+
+		-
+			message: '#^Parameter \#1 \$value of function intval expects array\|bool\|float\|int\|resource\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Controller/DiceGameController.php
+
+		-
+			message: '#^Cannot access offset ''current'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: src/Controller/LuckyController.php
+
+		-
+			message: '#^Cannot access offset ''temperature'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Controller/LuckyController.php
+
+		-
+			message: '#^Cannot access offset ''weather_descriptions'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Controller/LuckyController.php
+
+		-
+			message: '#^Cannot access offset ''weather_icons'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Controller/LuckyController.php
+
+		-
+			message: '#^Cannot access offset 0 on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Controller/LuckyController.php
+
+		-
+			message: '#^Cannot call method deckSize\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/MainController.php

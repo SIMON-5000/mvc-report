@@ -101,7 +101,7 @@ class CardGameController extends AbstractController
         $data = [
             'deckSize' => $deck->deckSize(),
             'deck' => $deck->getCardsFromDeck(),
-            'removed' => isset($allRemovedCards) ? $allRemovedCards->getCardsFromDeck() : null,
+            'removed' => $allRemovedCards->getCardsFromDeck(),
             'drawn' => isset($deckOfLastRemoved) ? $deckOfLastRemoved->getCardsFromDeck() : null
         ];
 

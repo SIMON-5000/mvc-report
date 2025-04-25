@@ -1,0 +1,11 @@
+# Fixed all to level 8. Added a baseline for level 9 and will try to work at level 9.
+includes:
+    - ../../phpstan-baseline.neon
+parameters:
+    level: 9
+    paths:
+        - ../../config
+        - ../../src
+        - ../../tests
+    bootstrapFiles:
+        #- .phpstan.constants.php

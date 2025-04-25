@@ -6,9 +6,21 @@ use App\Card\CardGraphic;
 
 class CardsDeck
 {
-    // heart, diamonds, clubs and spade:
+    /**
+     * The classic suits of cards.
+     * @var array<string>
+     */
     private $suits = ['spades', 'hearts', 'diamonds', 'clubs'];
+    /**
+     * Ranks from ace to king.
+     * @var array<string>
+     */
     private $ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+
+    /**
+     * The deck
+     * @var array<CardGraphic>
+     */
     private $deck;
 
     public function __construct()
@@ -27,7 +39,12 @@ class CardsDeck
         }
     }
 
-    public function createFromArray($cardsList): void
+    /**
+     * Creates cards from an array.
+     * @param array<array{suit: string, rank: string}> $cardsList
+     * @return void
+     */
+    public function createFromArray(array $cardsList): void
     {
         $this->deck = [];
         foreach ($cardsList as $card) {
@@ -35,7 +52,7 @@ class CardsDeck
         }
     }
 
-    public function add(Card $card): void
+    public function add(CardGraphic $card): void
     {
         $this->deck[] = $card;
     }
@@ -50,7 +67,12 @@ class CardsDeck
         return count($this->deck);
     }
 
-    public function draw($number = 1): array
+    /**
+     * Draws one or more cards.
+     * @param int $number
+     * @return list<array{rank: string, suit: string}>
+     */
+    public function draw(int $number = 1): array
     {
         $drawn = [];
 
@@ -63,7 +85,12 @@ class CardsDeck
         return $drawn;
     }
 
-    public function drawCard($number = 1): array
+    /**
+     * Draws one or more cards.
+     * @param int $number
+     * @return array<CardGraphic>
+     */
+    public function drawCard(int $number = 1): array
     {
         $drawn = [];
 
@@ -87,6 +114,10 @@ class CardsDeck
     //     return $currentDeck;
     // }
 
+    /**
+     * Gets deck as string values
+     * @return list<array<string, string>>
+     */
     public function getValues(): array
     {
         $values = [];
@@ -95,7 +126,11 @@ class CardsDeck
         }
         return $values;
     }
-
+    
+    /**
+     * Gets deck as card symbols
+     * @return array<string>
+     */
     public function getCardsFromDeck(): array
     {
         $cards = [];

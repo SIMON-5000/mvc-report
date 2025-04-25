@@ -14,14 +14,19 @@ class CardGraphic extends Card
      * Summary of suits
      * A B C D E Represents ranks: '10' 'Jack' 'Knight' 'Queen' 'King'. I will not be using Knight
      * https://www.compart.com/en/unicode/block/U+1F0A0
-     * @var array The four suits.
+     * @var array<string> The four suits.
      */
-    private $suits = [
+    private  $suits = [
         'spades' => 'A',
         'hearts' => 'B',
         'diamonds' => 'C',
         'clubs' => 'D'
     ];
+
+    /**
+     * Card ranks from Ace to King.
+     * @var array<string>
+     */
     private $ranks =
         ['A' => '1',
         '2' => '2',
@@ -56,11 +61,12 @@ class CardGraphic extends Card
      * mb_char takes a "codepoint" as argument, it works if I convert my string to type hexadecimal.
      * https://stackoverflow.com/questions/1365583/how-to-get-the-character-from-unicode-code-point-in-php
      *
-     * @return bool|string Returns a graphic representation of a playing card.
+     * @return string Returns a graphic representation of a playing card.
      */
     public function getAsCard(): string
     {
         $unicodeCard = "U+1F0" . $this->suits[$this->suit] . $this->ranks[$this->rank];
-        return mb_chr(hexdec($unicodeCard), 'UTF-8');
+        // Wrapped hexdec in intval, to ensure phpstan it is a int.
+        return mb_chr(intval(hexdec($unicodeCard)), 'UTF-8');
     }
 }

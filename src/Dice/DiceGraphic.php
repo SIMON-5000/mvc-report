@@ -4,6 +4,10 @@ namespace App\Dice;
 
 class DiceGraphic extends Dice
 {
+    /**
+     * 1-6 as die-sides
+     * @var array<string>
+     */
     private $representation = [
         '⚀',
         '⚁',
