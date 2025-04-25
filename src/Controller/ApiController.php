@@ -23,7 +23,7 @@ class ApiController extends AbstractController
     {
         $quoteContent = file_get_contents('data/quotes.json');
         if ($quoteContent == false) {
-            throw new \RuntimeException("Quotes not found");
+            throw new RuntimeException("Quotes not found");
         }
         /** @var array{quotes: array<string>} */
         $quotes = json_decode($quoteContent, true);
@@ -55,7 +55,7 @@ class ApiController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
-    }   
+    }
 
     /**
      * Gets the current deck from sessions, or make a new if none is there/empty.

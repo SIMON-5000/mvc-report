@@ -126,7 +126,7 @@ class CardsDeck
         }
         return $values;
     }
-    
+
     /**
      * Gets deck as card symbols
      * @return array<string>

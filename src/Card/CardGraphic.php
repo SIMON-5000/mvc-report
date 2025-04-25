@@ -16,7 +16,7 @@ class CardGraphic extends Card
      * https://www.compart.com/en/unicode/block/U+1F0A0
      * @var array<string> The four suits.
      */
-    private  $suits = [
+    private $suits = [
         'spades' => 'A',
         'hearts' => 'B',
         'diamonds' => 'C',

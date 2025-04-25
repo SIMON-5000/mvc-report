@@ -23,8 +23,8 @@ class LuckyController extends AbstractController
 
         $url = 'http://api.weatherstack.com/current?access_key='.$key.'&query='.$location.'&units=m';
         $weatherRepport =  file_get_contents($url);
-        
-        if(!$weatherRepport) {
+
+        if (!$weatherRepport) {
             $weatherRepport = "";
         }
         $res = json_decode($weatherRepport, true) ?? [
