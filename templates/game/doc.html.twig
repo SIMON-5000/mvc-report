@@ -1,0 +1,25 @@
+{% extends "game/game21_template.html.twig" %}
+
+{% block title %}Tjugoett{% endblock %}
+
+{% block article %}
+<article>
+    <h2>DOC</h2>
+    <p>
+        Om du aldrig spelat tjugoett så är det lätt att lära sig:
+        Du ska försöka uppnå det sammanlagda värdet 21, eller komma så nära som möjligt utan att överskrida 21.
+        Essen är värda valfritt 1 eller 14, kungarna 13, damerna 12, knektarna 11.
+        Nummerkorten har samma värden som valören.
+    </p>
+    <p>
+        Får du mer än 21 så "spricker" du. Du har förlorat.
+        Får du och banken samma poäng så vinner alltid banken. Orättvist va!? C'est la vie.
+    </p>
+    <menu>
+        <li><button class="btn" href="" value="submit">Starta spelet</button></li>
+        <li><button class="btn" href="">Dokumentation</button></li>
+    </menu>
+</article>
+
+{% endblock %}
+
