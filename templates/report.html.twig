@@ -8,8 +8,47 @@
     <nav class="report-menu">
         <a href="#kmom01">kmom01</a>
         <a href="#kmom02">kmom02</a>
+        <a href="#kmom03">kmom03</a>
     </nav>
-    <article class="kmom 02" id="kmom01">
+        <article class="kmom 03" id="kmom03">
+            <h2>KMOM-02</h2>
+            <h3>Att bygga ett kortspel</h3>
+            <p>
+                Det finns många sätt att lösa en sådan här uppgift. 
+                Jag övervägde att ha separate player-klasser och göra det möjligt att lägga till flera spelare,
+                men det mest logiska och som stämde in på ledorden YAGNI och KISS var att bara använda en klass som representerar själva spelet i sig.
+                Det blir som ett lager mellan Card, Deck och Hand-klasserna där all logik som är specifik för spelet hamnar. Exempelvis: 
+                Man bör kunna använda ess som 14 alternativt 1. Det är en regel för just spelet 21 och den beräkningen bör ske i dess spellogik-klass inte i korthanden.
+                Korthanden får en mer generell funktion som bara returnerar ett sammanslaget värde (då detta kan appliceras på många spel) sen sköts hanteringen av ess i
+                spel-logiken som fungerar som en medlare mellan de mer generella klasserna och spelaren. Jag har försökt tänka på Separation of concerns.
+            </p>
+            <h3>Klottra i block</h3>
+            <p>
+                Det var extremt hjälpsamt med både mitt enkla flödesschema och att skriva pseudokod. Den här veckan har jag åkt en del tåg och suttit i väntrum,
+                där har jag haft med mig ett anteckningsblock och klottrat ner en del pseudokod. Det är en perfekt metod att snabbt få ner sina tankar när man hittar en möjlig lösning på ett problem.
+                Jag har ritat flödesscheman i någon tidigare uppgift och bannat mig själv för att jag inte gjort det tidigare. Dett blir lite som en karta, vart man är och vart man ska härnäst.
+                Och det kan ibland vara ett större problem (eller iaf ta mer tid) för mig att jag går vilse i tankarna än hur man skriver själva koden.
+            </p>
+            <h3>Symfonys storhet?</h3>
+            <p>
+                Jag känner mig inte bekväm i Symfony, det framstår som oöverblickbart, för stort. Ju mer tid som går utan att alt krashar och brinner ju mer litar jag på det.
+                Det är till stor del osäkerhet som gör mig lite obekväm, men det finns gott om dokumentation att läsa, vilket jag borde göra.
+                De possitiva delarna är hur väl testat och utbyggt det är. Samt de informativa felmeddelandena man får.
+            </p>
+            <h3>Förbättringar</h3>
+            <p>
+                Mitt kortspel är fult, ej interaktivt men användbart. Jag var väldigt oinspirerad, såg bara problemen och hade inga visuella ideer, så jag fokuserade på spellogiken.
+                Jag borde också studera namn-konventioner. När man läser en del bra kod är namnen så extremt förklarande och bra. Några av mina kan jag tänka snarare väcker frågor, låt mig gärna veta.
+                Generellt gällande koden tror jag att det är här jag är. Jag tycker det verkar helt OK förutom flödet i hur jag tar fram vinnaren, det är något som borde gå att skriva snyggare vill jag minnas.
+            </p>
+            <p>
+                TIL för veckaorna var annars "Stan the man" PHPStan. Vilken sadist. Jag hade 60+ fel, "rättade till" något; jaha 72 fel! "Tack Stan".
+                Jag betade av dom från level 1 upp till 8, gjorde en baseline, sen slog jag på level 9 och gjorde som han sa.
+                För tillfället är vi på god fot, men jag misstänker att han kan ställa till problem när som helst.
+            </p>
+        </article>
+
+    <article class="kmom 02" id="kmom02">
         <h2>KMOM-02</h2>
         <h3>- Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</h3>
         <p>
