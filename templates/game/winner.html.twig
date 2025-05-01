@@ -9,7 +9,7 @@
         {{ include('flash.html.twig') }}
     </div>
     <div class="cards-21">
-        <h2>{{ winner }} vann!</h2>
+        <h3 class="winner">{{ winner }} vann!</h2>
         <fieldset class=player>
             <legend>Dina kort</legend>
             <div class=player-cards>
@@ -20,7 +20,7 @@
                 {% endfor %}
             </div>
 
-            <h3>{{ playerScore }}</h3>
+            <h4>{{ playerScore }}</h4>
         </fieldset>
 
 
@@ -33,7 +33,7 @@
                     </p>
                 {% endfor %}
             </div>
-            <h3>{{ bankScore }}</h3>
+            <h4>{{ bankScore }}</h4>
         </fieldset>
         
     </div>

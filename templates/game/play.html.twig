@@ -24,14 +24,16 @@
 
             <form method="post" action="">
                 <p>
-                    {% if playerScore < 21 %}
-                        <input
-                            type="submit"
-                            name="draw"
-                            value="Dra ett kort"
-                            onClick="this.form.action='{{ path('game21_handle_draw') }}';"
-                        >
-                    {% endif %}
+                    <input
+                        type="submit"
+                        name="draw"
+                        value="Dra ett kort"
+                        onClick="this.form.action='{{ path('game21_handle_draw') }}';"
+                        {% if playerScore >= 21 %}
+                            disabled
+                        {% endif %}
+                    >
+                    
                     <input
                         type="submit"
                         name="hold"
@@ -43,7 +45,7 @@
         </fieldset>
 
 
-        <fieldset class=bank>
+        {# <fieldset class=bank>
             <legend>Bankens kort</legend>
             <div class=bank-cards>
                 {% for card in bankCards %}
@@ -53,7 +55,7 @@
                 {% endfor %}
             </div>
             {{ bankScore }}
-        </fieldset>
+        </fieldset> #}
 
     </div>
 
