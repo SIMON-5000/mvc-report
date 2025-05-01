@@ -24,4 +24,4 @@ for (let card of cards) {
   }
 }
 
-document.body.addEventListener("load", setSuits);
+// document.body.addEventListener("load", setSuits);

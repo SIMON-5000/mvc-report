@@ -6,12 +6,13 @@ namespace App\Controller;
 // use App\Dice\DiceGraphic;
 // use App\Dice\DiceHand;
 use App\Card\CardsDeck;
+use App\Card\CardsHand;
 use App\Card\Game21Handler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+// use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Routing class for card game 21.
@@ -27,44 +28,90 @@ class Game21Controller extends AbstractController
 
     // Setup
     #[Route("/game/init", name: "game21_init", methods: ['POST'])]
-    public function init(Game21Handler $game): Response
+    public function init(
+        Game21Handler $game,
+        CardsDeck $deck
+        ): Response
     {
-        $deck = new CardsDeck();
-        $game->initGame( $deck);
-        // $playerHand = new CardsHand();
-        // $bankHand = new CardsHand();
-
+        // These seem to point at same object if injected:
+        $playerHand = new CardsHand();
+        $bankHand = new CardsHand();
+        
+        $game->initGame( $deck, $playerHand, $bankHand);
         return $this->redirectToRoute('game21_play');
     }
 
     // Shows game state, and offers draw/hold
     #[Route("/game/play", name: "game21_play", methods: ['GET'])]
-    public function play(): Response
+    public function play(Game21Handler $game): Response
     {
-        return $this->render('game/play.html.twig');
+        $playerHand = $game->getPlayerHand();
+        $bankHand = $game->getBankHand();
+
+        $data = [
+            "playerCards" => $playerHand->getCardsFromHand(),
+            "playerScore" => $playerHand->getHandValue(),
+            "bankCards" => $bankHand->getCardsFromHand(),
+            "bankScore" => $bankHand->getHandValue()
+        ];
+
+        return $this->render('game/play.html.twig', $data);
     }
 
     // Handle draw
     #[Route("/game/handle_draw", name: "game21_handle_draw", methods: ['POST'])]
     public function handleDraw(Game21Handler $game): Response
     {
-        //get all from session
+        // //get all from session
+        // // Sköta i GameLogic? $game->playerDraws(); ?
+        // $playerHand = $game->getPlayerHand();
+        // $deck = $game->getGameDeck();
 
-        // draw card
-        
-        // add card
+        // // draw card & add card
+        // $playerHand->drawCardToHand($deck);
 
-        // if($hand->isBust()) {
-        //  $this->addFlash(
-            // 'warning',
-            // 'Otur! Du fick mer än 21 och förlorar rundan.'
-            // );
+        $game->playerDraw();
+
+        $playerHand = $game->getPlayerHand();
+
+        if($game->isBust($playerHand)) {
+         $this->addFlash(
+            'warning',
+            'Otur! Du fick mer än 21 och förlorar rundan.'
+            );
 
             // Set state to lost
             // redirect
-        // }
+        }
 
         return $this->redirectToRoute('game21_play');
+    }
+
+    // Bank draws cards
+    #[Route("/game/banks_turn", name: "game21_banks_turn", methods: ['POST'])]
+    public function bankPlays(Game21Handler $game): Response
+    {
+        $game->bankPlays();
+
+        return $this->redirectToRoute('game21_winner');
+    }
+
+    // Present Winner
+    #[Route("/game/winner", name: "game21_winner", methods: ['GET'])]
+    public function presentWinner(Game21Handler $game): Response
+    {
+        $playerHand = $game->getPlayerHand();
+        $bankHand = $game->getBankHand();
+
+        $data = [
+            "winner" => $game->getWinner(),
+            "playerCards" => $playerHand->getCardsFromHand(),
+            "playerScore" => $playerHand->getHandValue(),
+            "bankCards" => $bankHand->getCardsFromHand(),
+            "bankScore" => $bankHand->getHandValue()
+        ];
+
+        return $this->render('game/winner.html.twig', $data);
     }
 
     // Documentation
