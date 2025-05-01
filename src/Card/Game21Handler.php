@@ -73,12 +73,18 @@ class Game21Handler
 
         $playerHand->drawCardToHand($deck);
 
+        // IF playerHand->isBust && playerHand->holdsAces
+        // 
+
         $this->session->set("playerHand", $playerHand);
     }
 
+    // bank makes moves
     public function bankPlays():void
     {
+        /** @var CardsDeck */
         $gameDeck = $this->session->get("gameDeck");
+        /** @var CardsHand */
         $bankHand = $this->session->get("bankHand");
 
         while ($bankHand->getHandValue() < 17){
@@ -88,16 +94,45 @@ class Game21Handler
         $this->session->set("bankHand", $bankHand);
     }
 
+    /**
+     * Checks scoring specific for 21.
+     * If the player is bust, the aces can be counted as 1 instead of 14
+     * @param \App\Card\CardsHand $cardsHand
+     * @return int The score.
+     */
+    public function calculate21Score(CardsHand $cardsHand):int
+    {
+        $score = $cardsHand->getHandValue();
+        $aces = $cardsHand->holdsAces();
+
+        while($score > 21 && $aces > 0){
+            $score -= 13;
+            $aces --;
+        }
+
+        return $score;
+    }
+
+
+    /**
+     * If there is a draw, bank "banken" wins.
+     * @return string "Du" if you win, and Banken if the bank wins.
+     */
     public function getWinner(): string
     {
-        
-
+        /** @var CardsHand */
         $playerHand = $this->session->get("playerHand");
+        /** @var CardsHand */
         $bankHand = $this->session->get("bankHand");
         
         $playerIsBust = $this->isBust($playerHand);
+        $bankIsBust = $this->isBust($bankHand);
+        // This logic could probably be improved:
+        if(!$playerIsBust && $this->calculate21Score($playerHand) > $this->calculate21Score($bankHand)){
+            return "Du";
+        }
 
-        if(!$playerIsBust && $playerHand->getHandValue() > $bankHand->getHandValue()){
+        if(!$playerIsBust && $bankIsBust){
             return "Du";
         }
 
@@ -106,7 +141,7 @@ class Game21Handler
 
     public function isBust(CardsHand $hand):bool
     {
-        if($hand->getHandValue() > 21) {
+        if($this->calculate21Score($hand) > 21) {
             return true;
         }
         return false;

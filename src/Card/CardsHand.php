@@ -68,6 +68,20 @@ class CardsHand
         return $calculatedValue;
     }
 
+
+    public function holdsAces():int
+    {
+        $aces = 0;
+
+        foreach($this->hand as $card) {
+            if($card->getValue()["rank"] === "A")
+            $aces += 1;
+        }
+
+        return $aces;
+    }
+
+
     /**
      * Gets hand as card symbols
      * @return array<string>

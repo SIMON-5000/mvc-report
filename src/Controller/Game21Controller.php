@@ -50,9 +50,9 @@ class Game21Controller extends AbstractController
 
         $data = [
             "playerCards" => $playerHand->getCardsFromHand(),
-            "playerScore" => $playerHand->getHandValue(),
+            "playerScore" => $game->calculate21Score($playerHand),
             "bankCards" => $bankHand->getCardsFromHand(),
-            "bankScore" => $bankHand->getHandValue()
+            "bankScore" => $game->calculate21Score($bankHand)
         ];
 
         return $this->render('game/play.html.twig', $data);
@@ -106,9 +106,9 @@ class Game21Controller extends AbstractController
         $data = [
             "winner" => $game->getWinner(),
             "playerCards" => $playerHand->getCardsFromHand(),
-            "playerScore" => $playerHand->getHandValue(),
+            "playerScore" => $game->calculate21Score($playerHand),
             "bankCards" => $bankHand->getCardsFromHand(),
-            "bankScore" => $bankHand->getHandValue()
+            "bankScore" => $game->calculate21Score($bankHand)
         ];
 
         return $this->render('game/winner.html.twig', $data);
