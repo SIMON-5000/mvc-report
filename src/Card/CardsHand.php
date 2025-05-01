@@ -4,6 +4,7 @@ namespace App\Card;
 
 use App\Card\CardGraphic;
 use App\Card\CardsDeck;
+
 class CardsHand
 {
     /**
@@ -23,7 +24,7 @@ class CardsHand
         // Returns an array (for flexibility in draw-ammount) of one card. Make new methods for readabillity?
         $this->add($card[0]);
     }
-    
+
     private function add(CardGraphic $card): void
     {
         array_push($this->hand, $card);
@@ -34,17 +35,17 @@ class CardsHand
         $score = 0;
         $ranks = [];
 
-        foreach($this->hand as $card) {
+        foreach ($this->hand as $card) {
             array_push($ranks, $card->getValue()["rank"]);
         }
-        
+
         $score = $this->calculateValue($ranks);
 
         return $score;
     }
     /**
      * Calculates combined value of cards in hand
-     * @param array<string> $ranks Cards ranks: "5", "Q", "K" etc.
+     * @param array<string> $ranks Cards ranks: "5"=5, "Q"=12, "K"=13 etc.
      * @return int
      */
     private function calculateValue(array $ranks): int
@@ -69,13 +70,14 @@ class CardsHand
     }
 
 
-    public function holdsAces():int
+    public function holdsAces(): int
     {
         $aces = 0;
 
-        foreach($this->hand as $card) {
-            if($card->getValue()["rank"] === "A")
-            $aces += 1;
+        foreach ($this->hand as $card) {
+            if ($card->getValue()["rank"] === "A") {
+                $aces += 1;
+            }
         }
 
         return $aces;

@@ -19,8 +19,7 @@ class Game21Handler
         CardsDeck $deck,
         CardsHand $playerHand,
         CardsHand $bankHand
-        ): void
-    {
+    ): void {
         $deck->fillDeck();
         $deck->shuffle();
 
@@ -74,20 +73,20 @@ class Game21Handler
         $playerHand->drawCardToHand($deck);
 
         // IF playerHand->isBust && playerHand->holdsAces
-        // 
+        //
 
         $this->session->set("playerHand", $playerHand);
     }
 
     // bank makes moves
-    public function bankPlays():void
+    public function bankPlays(): void
     {
         /** @var CardsDeck */
         $gameDeck = $this->session->get("gameDeck");
         /** @var CardsHand */
         $bankHand = $this->session->get("bankHand");
 
-        while ($bankHand->getHandValue() < 17){
+        while ($this->calculate21Score($bankHand) < 17) {
             $bankHand->drawCardToHand($gameDeck);
         }
 
@@ -100,14 +99,14 @@ class Game21Handler
      * @param \App\Card\CardsHand $cardsHand
      * @return int The score.
      */
-    public function calculate21Score(CardsHand $cardsHand):int
+    public function calculate21Score(CardsHand $cardsHand): int
     {
         $score = $cardsHand->getHandValue();
         $aces = $cardsHand->holdsAces();
 
-        while($score > 21 && $aces > 0){
+        while ($score > 21 && $aces > 0) {
             $score -= 13;
-            $aces --;
+            $aces--;
         }
 
         return $score;
@@ -124,24 +123,24 @@ class Game21Handler
         $playerHand = $this->session->get("playerHand");
         /** @var CardsHand */
         $bankHand = $this->session->get("bankHand");
-        
+
         $playerIsBust = $this->isBust($playerHand);
         $bankIsBust = $this->isBust($bankHand);
         // This logic could probably be improved:
-        if(!$playerIsBust && $this->calculate21Score($playerHand) > $this->calculate21Score($bankHand)){
+        if (!$playerIsBust && $this->calculate21Score($playerHand) > $this->calculate21Score($bankHand)) {
             return "Du";
         }
 
-        if(!$playerIsBust && $bankIsBust){
+        if (!$playerIsBust && $bankIsBust) {
             return "Du";
         }
 
         return "Banken";
     }
 
-    public function isBust(CardsHand $hand):bool
+    public function isBust(CardsHand $hand): bool
     {
-        if($this->calculate21Score($hand) > 21) {
+        if ($this->calculate21Score($hand) > 21) {
             return true;
         }
         return false;

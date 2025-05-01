@@ -36,6 +36,16 @@
             <h4>{{ bankScore }}</h4>
         </fieldset>
         
+        <form method="post" action="">
+            <input
+                class="btn card-btn restart-game-btn"
+                type="submit"
+                name="roll"
+                value="Starta om spelet"
+                onClick="this.form.action='{{ path('game21_init') }}';"
+            >
+        </form>
+
     </div>
 
 </article>

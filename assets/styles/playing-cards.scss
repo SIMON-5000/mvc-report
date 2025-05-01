@@ -55,3 +55,40 @@
 .winner{
   font-size: 3rem;
 }
+
+.card-btn{
+  // word-wrap: break-word;
+  white-space: normal;
+  aspect-ratio: 0.66;
+  height: 8rem;
+  border-radius: 0.5rem;
+  border: 3px solid $darken;
+  background-color: darkgreen;
+  color: $background;
+  box-shadow: 3px 2px 3px $darken;
+  scale: 1;
+  transition: all 0.3s;
+}
+
+.card-btn:hover{
+  box-shadow: 5px 3px 3px $darken;
+  scale: 1.02;
+}
+
+.card-btn:active{
+  box-shadow: 1px 1px 3px $darken;
+  scale: 1;
+}
+
+.card-btn:disabled{
+  color: $darken;
+}
+
+.card-hold-btn{
+  background-color: $col-red;
+}
+
+.restart-game-btn{
+  background-color: $col-red-dark;
+  margin-left: auto;
+}

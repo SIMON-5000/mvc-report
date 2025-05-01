@@ -11,7 +11,8 @@ use App\Card\Game21Handler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+
+// use Symfony\Component\HttpFoundation\Request;
 // use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
@@ -31,13 +32,12 @@ class Game21Controller extends AbstractController
     public function init(
         Game21Handler $game,
         CardsDeck $deck
-        ): Response
-    {
+    ): Response {
         // These seem to point at same object if injected:
         $playerHand = new CardsHand();
         $bankHand = new CardsHand();
-        
-        $game->initGame( $deck, $playerHand, $bankHand);
+
+        $game->initGame($deck, $playerHand, $bankHand);
         return $this->redirectToRoute('game21_play');
     }
 
@@ -62,26 +62,15 @@ class Game21Controller extends AbstractController
     #[Route("/game/handle_draw", name: "game21_handle_draw", methods: ['POST'])]
     public function handleDraw(Game21Handler $game): Response
     {
-        // //get all from session
-        // // Sköta i GameLogic? $game->playerDraws(); ?
-        // $playerHand = $game->getPlayerHand();
-        // $deck = $game->getGameDeck();
-
-        // // draw card & add card
-        // $playerHand->drawCardToHand($deck);
-
         $game->playerDraw();
 
         $playerHand = $game->getPlayerHand();
 
-        if($game->isBust($playerHand)) {
-         $this->addFlash(
-            'warning',
-            'Otur! Du fick mer än 21 och förlorar rundan.'
+        if ($game->isBust($playerHand)) {
+            $this->addFlash(
+                'warning',
+                'Otur! Du fick mer än 21 och förlorar rundan.'
             );
-
-            // Set state to lost
-            // redirect
         }
 
         return $this->redirectToRoute('game21_play');

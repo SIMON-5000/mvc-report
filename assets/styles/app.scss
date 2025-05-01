@@ -49,3 +49,9 @@ pre {
   margin: $space-s;
   max-width: 90vw;
 }
+
+a,
+.btn,
+input[type="submit"]{
+  cursor: pointer;
+}

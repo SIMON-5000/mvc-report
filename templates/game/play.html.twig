@@ -20,11 +20,12 @@
                 {% endfor %}
             </div>
 
-            {{ playerScore }}
+            <p>Poäng: {{ playerScore }}</p>
 
             <form method="post" action="">
-                <p>
+                <nav>
                     <input
+                        class="btn card-btn"
                         type="submit"
                         name="draw"
                         value="Dra ett kort"
@@ -35,12 +36,20 @@
                     >
                     
                     <input
+                        class="btn card-btn card-hold-btn"
                         type="submit"
                         name="hold"
                         value="Stanna"
                         onClick="this.form.action='{{ path('game21_banks_turn') }}';"
                     >
-                </p>
+                    <input
+                        class="btn card-btn restart-game-btn"
+                        type="submit"
+                        name="roll"
+                        value="Starta om spelet"
+                        onClick="this.form.action='{{ path('game21_init') }}';"
+                    >
+                </nav>
             </form>
         </fieldset>
 

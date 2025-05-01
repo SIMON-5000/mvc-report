@@ -10,7 +10,7 @@
     {{ include('flash.html.twig') }}
     <ul>
         <li class="api_links">Random Alfred Hitchkock quotes => <a href="{{ path('quote') }}">/api/quote</a></li>
-        <li>A representation of a deck of cards => <a href="{{ path('api_deck') }}">/api/quote</a></li>
+        <li>A representation of a deck of cards => <a href="{{ path('api_deck') }}">/api/deck</a></li>
         <li>
             Shuffle the cards => <form method="post" action="" class="inline"><input type="submit" name="shuffle" value="Get shuffled deck" onClick="this.form.action='{{ path('api_deck_shuffle_post') }}';"></form>
         </li>
@@ -24,6 +24,9 @@
                     <input name="num-cards" type="number" min="1" max="{{ maxValue }}" required>
                     <input type="submit" name="draw_many" value="Draw cards" onClick="this.form.action='{{ path('api_deck_draw_many_handler') }}';">
                 </form>
+        </li>
+        <li>
+            See the standings in latest round of 21 => <a href="{{ path('quote') }}">/api/game21</a>
         </li>
     </ul>
 
