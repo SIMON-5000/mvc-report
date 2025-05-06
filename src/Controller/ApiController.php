@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\CardsDeck;
+use App\Card\Game21Handler;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,6 +13,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
+/**
+ * Controller for API routing
+ */
 {
     #[Route("/api/quote", name:"quote")]
     /**
@@ -162,6 +166,25 @@ class ApiController extends AbstractController
     {
         $this->getDeck($session);
         $response = new JsonResponse($session->get("api_drawn"));
+
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route("/api/game21", name:"api_game_21")]
+    public function apiGame21(Game21Handler $game): Response
+    {
+        $bankHand = $game->getBankHand();
+        $playerHand = $game->getPlayerHand();
+
+        $gameRepresentation = [
+            "Bank Hand" => $game->calculate21Score($bankHand),
+            "Player Hand" => $game->calculate21Score($playerHand)
+        ];
+
+        $response = new JsonResponse($gameRepresentation);
 
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT

@@ -67,12 +67,13 @@
   color: $background;
   box-shadow: 3px 2px 3px $darken;
   scale: 1;
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .card-btn:hover{
   box-shadow: 5px 3px 3px $darken;
   scale: 1.02;
+  rotate: 360deg y;
 }
 
 .card-btn:active{
