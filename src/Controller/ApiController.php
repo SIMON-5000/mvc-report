@@ -181,7 +181,11 @@ class ApiController extends AbstractController
 
         $gameRepresentation = [
             "Bank Hand" => $game->calculate21Score($bankHand),
-            "Player Hand" => $game->calculate21Score($playerHand)
+            "Bank Cards" => $bankHand->getCardsFromHand(),
+            "Is Bank Bust" => $game->isBust($bankHand),
+            "Player Hand" => $game->calculate21Score($playerHand),
+            "Player Cards" => $playerHand->getCardsFromHand(),
+            "Is Player Bust" => $game->isBust($playerHand)
         ];
 
         $response = new JsonResponse($gameRepresentation);

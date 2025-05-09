@@ -4,7 +4,9 @@ namespace App\Card;
 
 use App\Card\CardGraphic;
 use App\Card\CardsDeck;
-
+/**
+ * Class for a hand holding cards of class <CardGraphic>.
+ */
 class CardsHand
 {
     /**
@@ -18,6 +20,11 @@ class CardsHand
         $this->hand = [];
     }
 
+    /**
+     * Draws a card from argumented deck amd adds it to hand.
+     * @param \App\Card\CardsDeck $deck Deck to draw card from.
+     * @return void
+     */
     public function drawCardToHand(CardsDeck $deck): void
     {
         $card = $deck->drawCard();
@@ -25,11 +32,20 @@ class CardsHand
         $this->add($card[0]);
     }
 
+    /**
+     * Add a card object to the hand.
+     * @param \App\Card\CardGraphic $card
+     * @return void
+     */
     public function add(CardGraphic $card): void
     {
         array_push($this->hand, $card);
     }
 
+    /**
+     * Calls calculate value and returns the hands value.
+     * @return int
+     */
     public function getHandValue(): int
     {
         $score = 0;
@@ -69,7 +85,10 @@ class CardsHand
         return $calculatedValue;
     }
 
-
+    /**
+     * Method to check if hand has an ace.
+     * @return int
+     */
     public function holdsAces(): int
     {
         $aces = 0;

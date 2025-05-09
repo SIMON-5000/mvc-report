@@ -16,12 +16,17 @@ class Game21HandlerTest extends TestCase
     // A mocked RequestStack to get session from, similar to corresponding "real" class.
     /** @var RequestStack&\PHPUnit\Framework\MockObject\MockObject $stubRequestStack */
     private $stubRequestStack;
-    // /** @var Mock_SessionInterface_3d0b63ef */
+
     /** @var SessionInterface&\PHPUnit\Framework\MockObject\MockObject $stubSession */
     private $stubSession;
+
     /** @var  array<string, CardsHand|CardsDeck> : empty-array */
     private $mockSessionArray;
 
+    /**
+     * Prepare the mock-session and it's return values.
+     * @return void
+     */
     public function setUp(): void
     {
         // Mock the session flow of game handler class:
@@ -35,7 +40,7 @@ class Game21HandlerTest extends TestCase
             ->willReturn($this->stubSession);
 
 
-        // Obtruce way of giving values to hand instead of adding a method.
+        // Obtruce way of giving values to hand instead of adding a method in hand-class.
         $deck = new CardsDeck();
         $deck->createFromArray([["suit" => "hearts", "rank" => "3" ]]);
         $playerHand = new CardsHand();
@@ -45,7 +50,7 @@ class Game21HandlerTest extends TestCase
         $bankHand = new CardsHand();
         $bankHand->drawCardToHand($deck);
 
-        // Callback instead of valueMap, because it works.
+        // Callback instead of valueMap, because I didn't get it to work.
         // https://docs.phpunit.de/en/9.6/test-doubles.html#test-doubles-stubs-examples-stubtest6-php
         // https://stackoverflow.com/questions/74603121/phpunit-how-can-i-use-a-mapping-for-method-arguments
         // Not [expectations].
@@ -114,7 +119,8 @@ class Game21HandlerTest extends TestCase
     // }
 
     /**
-     * Initialize game and confirm it saves a Deck and two hands to session.
+     * Test to initialize game and confirm it saves a Deck and two hands to session.
+     * @return void
      */
     public function testInit(): void
     {
@@ -171,7 +177,7 @@ class Game21HandlerTest extends TestCase
         /** @var CardsHand $postHand */
         $postHand = $this->mockSessionArray['playerHand'];
 
-
+        // GetHandValue does not get from session, just calculates.
         $this->assertGreaterThan($preHandValue, $postHand->getHandValue());
         $this->assertLessThan($preDeckSize, $deck->deckSize());
     }
@@ -198,9 +204,7 @@ class Game21HandlerTest extends TestCase
         // Draws a card from deck to hand and saves in session.
         $game->bankPlays();
 
-        /**
-         * @var CardsHand $postHand
-         */
+        /** @var CardsHand $postHand */
         $postHand = $this->mockSessionArray['bankHand'];
 
         $this->assertGreaterThan($preHandValue, $postHand->getHandValue());
@@ -261,9 +265,14 @@ class Game21HandlerTest extends TestCase
     }
 
     /**
-     * Testing isBust:
-     * assert that hand holding one Queen (12) is not bust and that
-     *  hand holding two Queens (24) is bust.
+     * Testing getWinner:
+     * Setup for three outcomes:
+     * 1. Player by default holds a 3, bank a 2
+     *      Expects Player to win.
+     * 2. Bank draws a King
+     *      Expects Bank to win.
+     * 3. Bank draws a second king.
+     *      Expects bBank to be bust; Player wins.
      * @return void
      */
     public function testGetWinner(): void
@@ -284,11 +293,12 @@ class Game21HandlerTest extends TestCase
 
         $bankHand->add($card);
 
-        $res2 = $game->getWinner($playerHand, $bankHand);
-        $exp2 = "Du";
+        $res3 = $game->getWinner($playerHand, $bankHand);
+        $exp3 = "Du";
 
         $this->assertEquals($exp, $res);
         $this->assertEquals($exp2, $res2);
+        $this->assertEquals($exp3, $res3);
 
     }
 

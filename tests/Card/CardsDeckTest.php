@@ -30,7 +30,7 @@ class CardsDeckTest extends TestCase
     public function testDrawCard(): void
     {
         $deck = new CardsDeck();
-        // $deck->fillDeck();
+        // Add 2 of clubs
         $deck->createFromArray([["suit" => "clubs", "rank" => "2"]]);
 
         // Array destructuring, does this work? drawCard returns an array of assoc. arrays
@@ -40,7 +40,7 @@ class CardsDeckTest extends TestCase
 
 
     /**
-     * Construct object and verify that the deck can be shuffled.
+     * Construct object and verify that the deck changes when shuffled.
      */
     public function testShuffle(): void
     {

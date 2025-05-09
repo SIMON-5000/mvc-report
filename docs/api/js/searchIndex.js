@@ -123,7 +123,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardsHand",
             "name": "CardsHand",
-            "summary": "",
+            "summary": "Class\u0020for\u0020a\u0020hand\u0020holding\u0020cards\u0020of\u0020class\u0020\u003CCardGraphic\u003E.",
             "url": "classes/App-Card-CardsHand.html"
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003A__construct\u0028\u0029",
@@ -133,17 +133,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003AdrawCardToHand\u0028\u0029",
             "name": "drawCardToHand",
-            "summary": "",
+            "summary": "Draws\u0020a\u0020card\u0020from\u0020argumented\u0020deck\u0020amd\u0020adds\u0020it\u0020to\u0020hand.",
             "url": "classes/App-Card-CardsHand.html#method_drawCardToHand"
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003Aadd\u0028\u0029",
             "name": "add",
-            "summary": "",
+            "summary": "Add\u0020a\u0020card\u0020object\u0020to\u0020the\u0020hand.",
             "url": "classes/App-Card-CardsHand.html#method_add"
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003AgetHandValue\u0028\u0029",
             "name": "getHandValue",
-            "summary": "",
+            "summary": "Calls\u0020calculate\u0020value\u0020and\u0020returns\u0020the\u0020hands\u0020value.",
             "url": "classes/App-Card-CardsHand.html#method_getHandValue"
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003AcalculateValue\u0028\u0029",
@@ -153,7 +153,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003AholdsAces\u0028\u0029",
             "name": "holdsAces",
-            "summary": "",
+            "summary": "Method\u0020to\u0020check\u0020if\u0020hand\u0020has\u0020an\u0020ace.",
             "url": "classes/App-Card-CardsHand.html#method_holdsAces"
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003AgetCardsFromHand\u0028\u0029",
