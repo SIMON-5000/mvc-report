@@ -37,9 +37,9 @@ class Game21Handler
     public function getGame(): array
     {
         $game = [
-            $this->session->get("gameDeck"),
-            $this->session->get("playerHand"),
-            $this->session->get("bankHand")
+            $this->getGameDeck(),
+            $this->getPlayerHand(),
+            $this->getBankHand()
         ];
         return $game;
     }
@@ -115,14 +115,21 @@ class Game21Handler
 
     /**
      * If there is a draw, bank "banken" wins.
+     * @param ?CardsHand $playerHand
+     * @param ?CardsHand $bankHand
      * @return string "Du" if you win, and Banken if the bank wins.
      */
-    public function getWinner(): string
+    public function getWinner($playerHand = null, $bankHand = null): string
     {
-        /** @var CardsHand */
-        $playerHand = $this->session->get("playerHand");
-        /** @var CardsHand */
-        $bankHand = $this->session->get("bankHand");
+        if (!$playerHand) {
+            /** @var CardsHand */
+            $playerHand = $this->session->get("playerHand");
+        }
+
+        if (!$bankHand) {
+            /** @var CardsHand */
+            $bankHand = $this->session->get("bankHand");
+        }
 
         $playerIsBust = $this->isBust($playerHand);
         $bankIsBust = $this->isBust($bankHand);

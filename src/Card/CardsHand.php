@@ -25,7 +25,7 @@ class CardsHand
         $this->add($card[0]);
     }
 
-    private function add(CardGraphic $card): void
+    public function add(CardGraphic $card): void
     {
         array_push($this->hand, $card);
     }

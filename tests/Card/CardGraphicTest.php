@@ -21,7 +21,7 @@ class CardGraphicTest extends TestCase
         $card = new CardGraphic("hearts", "2");
         $this->assertInstanceOf("\App\Card\CardGraphic", $card);
 
-        $res= $card->getAsCard();
+        $res = $card->getAsCard();
         $this->assertEquals("🂲", $res);
     }
 

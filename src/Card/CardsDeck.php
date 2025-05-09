@@ -3,7 +3,11 @@
 namespace App\Card;
 
 use App\Card\CardGraphic;
-
+/**
+ * A class to handle playing cards.
+ * It keeps them in an array and can perform deck related operations:
+ * Draw card, count cards and shuffle and more.
+ */
 class CardsDeck
 {
     /**
@@ -23,11 +27,18 @@ class CardsDeck
      */
     private $deck;
 
+    /**
+     * Constructor sets the deck variable to an empty array.
+     */
     public function __construct()
     {
         $this->deck = [];
     }
 
+    /**
+     * Fills the deck with the 52 cards.
+     * @return void
+     */
     public function fillDeck(): void
     {
         foreach ($this->suits as $suit) {
@@ -52,16 +63,29 @@ class CardsDeck
         }
     }
 
+    /**
+     * Adds a card of class CardGraphic to deck
+     * @param \App\Card\CardGraphic $card
+     * @return void
+     */
     public function add(CardGraphic $card): void
     {
         $this->deck[] = $card;
     }
 
+    /**
+     * Randomizes the order of the cards
+     * @return void
+     */
     public function shuffle(): void
     {
         shuffle($this->deck);
     }
 
+    /**
+     * Returns the number of cards in deck.
+     * @return int Number of cards
+     */
     public function deckSize(): int
     {
         return count($this->deck);

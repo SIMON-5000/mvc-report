@@ -53,17 +53,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardsDeck",
             "name": "CardsDeck",
-            "summary": "",
+            "summary": "A\u0020class\u0020to\u0020handle\u0020playing\u0020cards.",
             "url": "classes/App-Card-CardsDeck.html"
         },                {
             "fqsen": "\\App\\Card\\CardsDeck\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020sets\u0020the\u0020deck\u0020variable\u0020to\u0020an\u0020empty\u0020array.",
             "url": "classes/App-Card-CardsDeck.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\CardsDeck\u003A\u003AfillDeck\u0028\u0029",
             "name": "fillDeck",
-            "summary": "",
+            "summary": "Fills\u0020the\u0020deck\u0020with\u0020the\u002052\u0020cards.",
             "url": "classes/App-Card-CardsDeck.html#method_fillDeck"
         },                {
             "fqsen": "\\App\\Card\\CardsDeck\u003A\u003AcreateFromArray\u0028\u0029",
@@ -73,17 +73,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardsDeck\u003A\u003Aadd\u0028\u0029",
             "name": "add",
-            "summary": "",
+            "summary": "Adds\u0020a\u0020card\u0020of\u0020class\u0020CardGraphic\u0020to\u0020deck",
             "url": "classes/App-Card-CardsDeck.html#method_add"
         },                {
             "fqsen": "\\App\\Card\\CardsDeck\u003A\u003Ashuffle\u0028\u0029",
             "name": "shuffle",
-            "summary": "",
+            "summary": "Randomizes\u0020the\u0020order\u0020of\u0020the\u0020cards",
             "url": "classes/App-Card-CardsDeck.html#method_shuffle"
         },                {
             "fqsen": "\\App\\Card\\CardsDeck\u003A\u003AdeckSize\u0028\u0029",
             "name": "deckSize",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020number\u0020of\u0020cards\u0020in\u0020deck.",
             "url": "classes/App-Card-CardsDeck.html#method_deckSize"
         },                {
             "fqsen": "\\App\\Card\\CardsDeck\u003A\u003Adraw\u0028\u0029",

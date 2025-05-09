@@ -13,9 +13,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
-/**
- * Controller for API routing
- */
+    /**
+     * Controller for API routing
+     */
 {
     #[Route("/api/quote", name:"quote")]
     /**

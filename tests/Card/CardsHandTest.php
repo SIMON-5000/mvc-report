@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
  */
 class CardsHandTest extends TestCase
 {
-
     /**
      * Construct object and verify that the object can draw a card.
      */
@@ -35,7 +34,7 @@ class CardsHandTest extends TestCase
         $hand = new CardsHand();
         $deck = new CardsDeck();
         // Create a deck with one card: 5 and Jack of hearts. 5 + 11 = 16.
-        $deck->createFromArray([["rank"=>"5", "suit"=>"hearts"], ["rank"=>"J", "suit"=>"hearts"]]);
+        $deck->createFromArray([["rank" => "5", "suit" => "hearts"], ["rank" => "J", "suit" => "hearts"]]);
 
         $hand->drawCardToHand($deck);
         $hand->drawCardToHand($deck);
@@ -51,7 +50,7 @@ class CardsHandTest extends TestCase
     {
         $hand = new CardsHand();
         $deck = new CardsDeck();
-        $deck->createFromArray([["rank"=>"A", "suit"=>"hearts"]]);
+        $deck->createFromArray([["rank" => "A", "suit" => "hearts"]]);
 
         $hand->drawCardToHand($deck);
         $res = $hand->holdsAces();

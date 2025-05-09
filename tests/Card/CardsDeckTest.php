@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
  */
 class CardsDeckTest extends TestCase
 {
-
     /**
      * Construct object and verify that the object can be filled.
      * Is it OK to implicitly test things?
@@ -32,13 +31,13 @@ class CardsDeckTest extends TestCase
     {
         $deck = new CardsDeck();
         // $deck->fillDeck();
-        $deck->createFromArray([["suit"=>"clubs", "rank"=>"2"]]);
+        $deck->createFromArray([["suit" => "clubs", "rank" => "2"]]);
 
         // Array destructuring, does this work? drawCard returns an array of assoc. arrays
         [$cardArray] = $deck->draw();
         $this->assertEquals("2", $cardArray["rank"]);
     }
-    
+
 
     /**
      * Construct object and verify that the deck can be shuffled.
