@@ -71,14 +71,15 @@
 }
 
 .card-btn:hover{
-  box-shadow: 5px 3px 3px $darken;
-  scale: 1.02;
-  rotate: 360deg y;
+  scale: 1.01;
+  rotate: 25deg y;
+  box-shadow: 12px 5px 5px $darken;
 }
 
 .card-btn:active{
   box-shadow: 1px 1px 3px $darken;
   scale: 1;
+  rotate: 360deg y;
 }
 
 .card-btn:disabled{

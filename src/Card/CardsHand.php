@@ -4,6 +4,7 @@ namespace App\Card;
 
 use App\Card\CardGraphic;
 use App\Card\CardsDeck;
+
 /**
  * Class for a hand holding cards of class <CardGraphic>.
  */

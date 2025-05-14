@@ -69,7 +69,7 @@ class Game21HandlerTest extends TestCase
 
         // var_dump($this->stubSession->get("playerHand"));
 
-        // Jag kunde läsa från array:en också I method('get'). Om tid finns.
+        // Jag kunde läsa från array:en också I method('get').
         $this->stubSession->method('set')
             ->willReturnCallback(function (string $arg) use ($playerHand, $bankHand, $deck) {
                 if ($arg === 'playerHand') {
@@ -83,40 +83,6 @@ class Game21HandlerTest extends TestCase
             });
 
     }
-
-    // public function setUp(): void
-    // {
-    //     // $deck = new CardsDeck();
-    //     // $playerHand = new CardsHand();
-    //     // $bankHand = new CardsHand();
-
-    //     $this->stubRequestStack = $this->createMock(RequestStack::class);
-    //     $this->stubSession = $this->createMock(SessionInterface::class);
-
-    //     // ->getSession() returns a mock SessionInterface.
-    //     $this->stubRequestStack
-    //         ->method('getSession')
-    //         ->willReturn($this->stubSession);
-
-    // VALUE MAP FUNKAR EJ.
-    //     $playerHand = new CardsHand();
-    //     // Emulate how session->get works:
-    //     // Valuemap
-    //     // https://docs.phpunit.de/en/9.6/test-doubles.html#test-doubles-stubs-examples-stubtest5-php
-    //     $sessionItems = [
-    //         ['gameDeck', $deck],
-    //         ['playerHand', $playerHand],
-    //         ['bankHand', $bankHand]
-    //     ];
-
-    //     $this->stubSession
-    //     ->method('get')
-    //     ->will($this->returnValueMap($sessionItems));
-
-    //     var_dump($this->stubSession->get("playerHand"));
-
-    //     //  $this->$stubSession = $stubSession;
-    // }
 
     /**
      * Test to initialize game and confirm it saves a Deck and two hands to session.

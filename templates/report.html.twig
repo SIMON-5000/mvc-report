@@ -10,6 +10,56 @@
         <a href="#kmom02">kmom02</a>
         <a href="#kmom03">kmom03</a>
     </nav>
+        <article class="kmom kmom04" id="kmom04">
+            <h2>KMOM-04</h2>
+            <h3>Kod som testar kod - med PHPUnit</h3>
+            <p>
+                Min första bekantskap med testning var under OOPython-kursen, det verkade meningsfullt, men lite tråkigt, 
+                jag kämpade mig igenom dom. När jag sedan skrev slutuppgiften med rekursiva traversioner minns jag tanken: 
+                _"Om det bara hade funnits ett sätt att hålla koll på att alla delar som påverkas av detta fortfarande funkar!"_ 
+                sen kom jag på testerna, jag hade glömt att dom faktiskt kan fylla en praktisk funktion!
+
+                PHPUnit är ganska likt testerna vi använde i python, och när jag läser i dokumentationen verkar det bra. 
+                Dock är dokumentationen lite väl snål, eller riktad till mer erfarna programmerare. 
+            </p>
+            <h3>90% kodtäckning?</h3>
+            <p>
+                Jag nådde 100% kodteckning, vilket inte säger något om testernas kvalitet.
+                Jag började testningen "utifrån", med de klasser som använder andra. 
+                Där kommer mycket täckning på de underliggande klasserna automatiskt.
+                Så ska man nog inte göra, det blev ibland att jag sorterade gröna rader som klara, fast de bara testats implicit, 
+                och kanske inte deras logik testats korrekt.
+            </p>
+            <h3>Testbarhet och förbättringar?</h3>
+            <p>
+                All min kod går att testa men vissa delar borde varit enklare.
+                Mina största problem var att testa kommunikationen med session, jag trixade med mockningen ett bra tag.
+                Antagligen överkomplicerar jag det. Men när jag väl fick till en setup så flöt det på.
+                Jag borde ha brutit ut själva kommunikationen till en separat klass. Generellt verkar en god
+                separation of concerns vara väldigt skönt när man testar.
+            </p>
+            <h3>Skriva om kod för test</h3>
+            <p>
+                Jag skrev om smådelar, men undlät mig att lägga till en del metoder som egentligen hade förenklat processen.
+                Varför? Jag började fundera på om det är "rätt" att inkludera en metod i en klass för att använda enbart i testning.
+                Att forma klassen så den är lätt att testa är en sak, att skriva metoder som enbart används i testning är nog en annan?
+            </p>
+            <h3>Är testbar kod “snygg och ren kod”</h3>
+            <p>
+                Det finns samband där, logisk och enkel kod. Tydligt uppdelad där var del har ett eget ansvarsområde underlättar.
+                Och det är ju rent och testbart. 
+            </p>
+            <h3>Veckans läroupplevelse</h3>
+            <p>
+                Mockningen av sessionshanteringen var en resa.
+                Jag försökte mocka med `willReturnMap` men fick det inte att funka,
+                så jag bytte till `willReturnCallback` och då gick det bättre.
+                I callbacken kan man skriva lite friare kod och forma stub:en som man vill, skönt. 
+                Och det var intressant att testa anonyma funktioner och deras beteende i PHP. 
+                Att man måste importera det man vill använda in i dess block-scope.
+            </p>
+        </article>
+
         <article class="kmom 03" id="kmom03">
             <h2>KMOM-03</h2>
             <h3>Att bygga ett kortspel</h3>

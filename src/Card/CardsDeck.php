@@ -3,6 +3,7 @@
 namespace App\Card;
 
 use App\Card\CardGraphic;
+
 /**
  * A class to handle playing cards.
  * It keeps them in an array and can perform deck related operations:
