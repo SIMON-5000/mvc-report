@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add book!{% endblock %}
+
+{% block main %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95vw; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello booklovers</h1>
+        <form method="post" action="" class="form add-book-form">
+            <label for="author">Author:
+                <input id="author" name="author" type="text" min="1" max="255" required>
+            </label>
+
+            <label for="titel">Title:
+                <input id="titel" name="title" type="text" min="1" max="255" required>
+            </label>
+
+            <label for="isbn">ISBN:
+                <input id="isbn" name="isbn" type="text" min="1" max="255" required>
+            </label>
+
+            <input type="submit" name="do_it" value="Lägg till boken">
+        </form>
+</div>
+{% endblock %}
