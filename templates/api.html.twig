@@ -28,6 +28,8 @@
         <li>
             See the standings in latest round of 21 => <a href="{{ path('api_game_21') }}">/api/game21</a>
         </li>
+        <li class="api_links">All books in library => <a href="{{ path('api_all_books') }}">/api/library</a></li>
+        <li class="api_links">Specific bok <small>Change id to se another book</small> => <a href="{{ path('api_book_by_id', {'id': 4 }) }}">/api/book/{id}</a></li>
     </ul>
 
 {% endblock %}
