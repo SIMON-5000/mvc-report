@@ -30,6 +30,7 @@ build:
                     #- phpcs-run # Not used, missing config file
     tests:
         override:
+            -   command: "bin/console sass:build"
             -   command: "bin/phpunit"
                 # command: "XDEBUG_MODE=coverage composer phpunit"
                 # command: "composer phpunit"
