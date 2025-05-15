@@ -1,0 +1,37 @@
+{% extends 'book/library-template.html.twig' %}
+
+{% block title %}Om boken{% endblock %}
+
+{% block article %}
+
+<div class="example-wrapper">
+    <h2>{{ book.getTitle|e }}</h2>
+
+    <img 
+        src="{{ asset('img/'~book.getImg ) }}"
+        alt="{{ book.getTitle|e }}" 
+        onerror="this.onerror=null;this.src='{{ asset('img/book.png') }}';"
+        width="300"
+    >
+    <p>
+        <span class="icons-book">
+            <a href="{{ path('edit_book', {'id': book.getId|e }) }}">
+                Redigera {{ ux_icon('lucide:edit') }}
+            </a>
+
+            <a href="{{ path('remove_book', {'id': book.getId|e }) }}">
+                Radera {{ ux_icon('lucide:delete') }}
+            </a>
+        </span>
+    </p>
+
+    <p>Detaljer:</p>
+
+    <ul>
+        <li>Författare: <span class="book-details">{{ book.getAuthor|e }}</span</li>
+        <li>Titel: <span class="book-details">{{ book.getTitle|e }}</span</li>
+        <li>ISBN: <span class="book-details">{{ book.getIsbn|e }}</span</li>
+    </ul>
+
+</div>
+{% endblock %}

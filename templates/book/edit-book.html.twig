@@ -1,0 +1,62 @@
+{% extends 'book/library-template.html.twig' %}
+
+{% block title %}Add book!{% endblock %}
+
+{% block article %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95vw; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello booklovers</h1>
+        <form method="post" action="{{ path('update_book', {'id': book.getId }) }}" class="form book-form">
+
+            <label for="author">Författare:
+                <input 
+                    id="author"
+                    name="author"
+                    type="text"
+                    min="1"
+                    max="255"
+                    value="{{book.getAuthor|e}}"
+                    required>
+            </label>
+
+            <label for="title">Titel:
+                <input 
+                    id="title"
+                    name="title"
+                    type="text"
+                    min="1"
+                    max="255"
+                    value="{{ book.getTitle|e }}"
+                    required>
+            </label>
+
+            <label for="isbn">ISBN:
+                <input
+                    id="isbn"
+                    name="isbn"
+                    type="text"
+                    min="1" 
+                    max="255"
+                    value="{{ book.getIsbn|e }}"
+                    required>
+            </label>
+
+            <label for="img">Bild:
+                <input 
+                    id="img"
+                    name="img"
+                    type="text"
+                    min="1"
+                    max="255"
+                    value="{{ book.getImg|e }}"
+                    required>
+            </label>
+
+            <input type="submit" name="do_it" value="Uppdatera boken">
+        </form>
+</div>
+{% endblock %}

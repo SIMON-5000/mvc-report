@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Biblioteket{% endblock %}
+
+{% block main %}
+<h1>Biblioteket</h1>
+
+<ul class="library-menu">
+    <li class=""><a href="{{ path('library') }}">Startsidan</a></li>
+    <li class=""><a href="{{ path('show_books') }}">Se alla böcker</a></li>
+    <li class=""><a href="{{ path('add_book') }}">Lägg till en bok</a></li>
+</ul>
+
+
+{% block article %}
+
+
+{% endblock %}
+{% endblock %}
