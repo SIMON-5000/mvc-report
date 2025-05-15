@@ -1,0 +1,64 @@
+@use 'helpers' as *;
+
+
+.library-menu {
+  @include flex-center(row);
+  list-style: none;
+  padding: $space-s;
+  li {
+    @include link-border;
+    padding: $space-s;
+    margin: $space-s;
+    text-decoration: none;
+    font-weight: 800; 
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.example-wrapper { 
+  margin: 1em auto;
+  max-width: 800px;
+  width: 95vw;
+}
+.example-wrapper code {
+  background: #F5F5F5;
+  padding: 2px 6px;
+}
+
+.book-form {
+  @include flex-center;
+  label {
+    display: block;
+    margin-top: $space-s;
+  }
+  input{
+    display: block;
+    margin-bottom: $space-s;
+  }
+}
+
+.book-preview {
+  margin-top: $space-m;
+  list-style: none;
+}
+
+.icons-book {
+  margin: $space-m auto;
+  @include link-border;
+  color: $main-text-color;
+  height: 100%;
+  
+  a {
+    margin: 0 $space-s;
+    padding: $space-s;
+  }
+
+  svg {
+    height: $base-font-size;
+    color: $main-text-color;
+    vertical-align: middle;
+  }
+}
