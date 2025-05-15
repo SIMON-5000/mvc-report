@@ -31,6 +31,8 @@ build:
     tests:
         override:
             -   command: "bin/console sass:build"
+            -   command: "bin/console asset-map:compile"
+            -   command: "npm run build"
             -   command: "bin/phpunit"
                 # command: "XDEBUG_MODE=coverage composer phpunit"
                 # command: "composer phpunit"
