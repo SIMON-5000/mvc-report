@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747337391">
-  <project timestamp="1747337391">
+<coverage generated="1747337715">
+  <project timestamp="1747337715">
     <file name="/Users/simon/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="8" coveredelements="8"/>
@@ -103,7 +103,7 @@
       <line num="79" type="stmt" count="6"/>
       <line num="80" type="stmt" count="4"/>
       <line num="81" type="stmt" count="4"/>
-      <line num="83" type="stmt" count="5"/>
+      <line num="83" type="stmt" count="4"/>
       <line num="86" type="stmt" count="6"/>
       <line num="93" type="method" name="holdsAces" visibility="public" complexity="3" crap="3" count="5"/>
       <line num="95" type="stmt" count="5"/>
