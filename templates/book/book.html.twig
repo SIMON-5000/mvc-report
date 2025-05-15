@@ -1,6 +1,6 @@
 {% extends 'book/library-template.html.twig' %}
 
-{% block title %}Om boken{% endblock %}
+{% block title %}Om {{ book.getTitle|e }}{% endblock %}
 
 {% block article %}
 

@@ -9,7 +9,59 @@
         <a href="#kmom01">kmom01</a>
         <a href="#kmom02">kmom02</a>
         <a href="#kmom03">kmom03</a>
+        <a href="#kmom04">kmom04</a>
     </nav>
+            <article class="kmom kmom05" id="kmom05">
+            <h2>KMOM-05</h2>
+            <h3>En doktrin i symfonin?</h3>
+            <p>
+                Övningen var bra och tydlig, det är mycket nytt, men man får ett bra sätt att lösa C.R.U.D. med.
+                Sedan när jag använder det själv och läser det länkade dokumentet
+                https://symfony.com/doc/current/doctrine.html ser jag att saker går att göra på flera sätt.
+                Aj då, då måste man som nyfiken person kolla upp vad som skiljer sig mellan att använda 
+                <code>EntityManagerInterface $entityManager</code> 
+                respektive
+                <code>
+                ( ManagerRegistry $doctrine )
+                $entityManager = $doctrine->getManager();
+                </code> 
+                Hur vet EntityManagerInterface vilken entity den skall jobba med? och så vidare...
+                Hjälp mig i mitt självskadebeteende.
+            </p>
+
+            <h3>Ett litet bibliotek</h3>
+            <p>
+                Jag har inte lagt till några extra funktioner, så det var inte så mycket att tänka på.
+                Jag försökte göra det logiskt och enkelt.
+                Om man klickar in på en bok kan man uppdatera eller radera den där.
+                Det bör vara ett lättbegripligt flöde.
+                Jag gjorde en ny library-template i twig som "extendar" base-template med de få länkar som behövs.
+                Specialisering genom arv.
+            </p>
+            <h3>ORMtjusare?</h3>
+            <p>
+                Dom har gjort ett väldigt användarvänligt gränssnitt med terminalklienten som man fyller i.
+                Men det gör att man hamnar långt bort från databasen när man behöver anpassa eller ändra den.
+                Det blir (kanske bara i början) lätt att gå vilse bland mellanhänderna/lagren som skiljer mig från databasen.
+                Men det är skönt om man har en fungerande struktur som inte behöver ändras och man kan använda getters och setters, så man slipper byta programmeringsspråk.
+            </p>
+            <p>
+                Ett smart system, en klass är en tabell, en instans är en rad.
+                Jag tänkte på likheten i tänk när vi läste OOPython och Databaskursen parallellt,
+                både klasser och tabeller representerar ofta objekt eller företeelser i den riktiga världen,
+                och de bör separeras efter ansvarsområde och ha en specifik uppgift.
+                Så jag tycker det är ett logiskt och bra arbetssätt.
+            </p>
+            <h3>Veckans lärdomar</h3>
+            <p>
+                Jag gjorde en array_map med PHPs arrow function (slängde den sen).<br>
+                Att lära sig syntaxen för att blidka PHP-Stan borde vara en egen kurs.<br>
+                Att när man inte använder serializer så är controllerns json-metod en förtäckt
+                json_encode vilket innebär att man kan använda 'json_encode_options' och lägga
+                in den fördefinierade konstanten JSON_PRETTY_PRINT.
+            </p>
+        </article>
+
         <article class="kmom kmom04" id="kmom04">
             <h2>KMOM-04</h2>
             <h3>Kod som testar kod - med PHPUnit</h3>

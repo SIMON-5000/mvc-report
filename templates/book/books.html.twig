@@ -1,6 +1,6 @@
 {% extends 'book/library-template.html.twig' %}
 
-{% block title %}Hello BookController!{% endblock %}
+{% block title %}Bibliotekets böcker{% endblock %}
 
 {% block article %}
 <style>
@@ -22,7 +22,7 @@
                     onerror="this.onerror=null;this.src='{{ asset('img/book.png') }}';"
                     height="50"
                 >
-                <a href="{{ path('book_by_id', {'id': book.getId|e } ) }}">{{ book.getIsbn|e }} <b>{{ book.getAuthor|e }}</b> {{ book.getTitle|e }}</a>
+                <a href="{{ path('book_by_id', {'id': book.getId|e } ) }}"><b>{{ book.getAuthor|e }}</b> - {{ book.getTitle|e }}</a>
             </li>
         {% endfor %}
     </ul>
