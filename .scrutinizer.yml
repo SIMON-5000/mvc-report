@@ -3,9 +3,13 @@ imports:
 
 filter:
     excluded_paths: [
-      vendor/*,
-      test/*,
+      bin/*,
+      config/*,
       docs/*,
+      migrations/*,
+      test/*,
+      tools/*,
+      vendor/*,
       src/product/*,
       src/Entity/Product.php,
       src/Repository/ProductRepository.php,
