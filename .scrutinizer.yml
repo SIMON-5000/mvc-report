@@ -7,7 +7,7 @@ filter:
       config/*,
       docs/*,
       migrations/*,
-      test/*,
+      test/Controller/ProductControllerTest.php,
       tools/*,
       vendor/*,
       src/product/*,
