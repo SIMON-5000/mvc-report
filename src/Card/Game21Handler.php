@@ -31,7 +31,7 @@ class Game21Handler
     }
 
     /**
-     * Summary of getGame
+     * Gets all parts of the game
      * @return mixed[]
      */
     public function getGame(): array
@@ -65,6 +65,10 @@ class Game21Handler
         return $deck;
     }
 
+    /**
+     * Player draws a card
+     * @return void
+     */
     public function playerDraw(): void
     {
         $playerHand = $this->getPlayerHand();
@@ -78,7 +82,10 @@ class Game21Handler
         $this->session->set("playerHand", $playerHand);
     }
 
-    // bank makes moves
+    /**
+     * Bank draws cards until a score of 17 is reached.
+     * @return void
+     */
     public function bankPlays(): void
     {
         /** @var CardsDeck */
@@ -114,7 +121,7 @@ class Game21Handler
 
 
     /**
-     * If there is a draw, bank "banken" wins.
+     * If there is a draw, bank "Banken" wins.
      * @param ?CardsHand $playerHand
      * @param ?CardsHand $bankHand
      * @return string "Du" if you win, and Banken if the bank wins.
@@ -130,26 +137,57 @@ class Game21Handler
             /** @var CardsHand */
             $bankHand = $this->session->get("bankHand");
         }
-
-        $playerIsBust = $this->isBust($playerHand);
-        $bankIsBust = $this->isBust($bankHand);
-        // This logic could probably be improved:
-        if (!$playerIsBust && $this->calculate21Score($playerHand) > $this->calculate21Score($bankHand)) {
-            return "Du";
-        }
-
-        if (!$playerIsBust && $bankIsBust) {
+        
+        if ($this->playerHasWon($playerHand, $bankHand)) {
             return "Du";
         }
 
         return "Banken";
     }
 
+    /**
+     * Checks a hand if it is over 21 with possible Aces deducted.
+     * @param \App\Card\CardsHand $hand
+     * @return bool
+     */
     public function isBust(CardsHand $hand): bool
     {
         if ($this->calculate21Score($hand) > 21) {
             return true;
         }
+        return false;
+    }
+
+    /**
+     * Runs a controll to see if player has won.
+     * Otherwise bank has won.
+     * @param \App\Card\CardsHand $playerHand
+     * @param \App\Card\CardsHand $bankHand
+     * @return bool
+     */
+    private function playerHasWon(CardsHand $playerHand, CardsHand $bankHand): bool
+    {
+        // $playerIsBust = $this->isBust($playerHand);
+        $bankIsBust = $this->isBust($bankHand);
+        $playerScore = $this->calculate21Score($playerHand);
+        $bankScore = $this->calculate21Score($bankHand);
+        
+        // if ($playerIsBust) {
+        //     return false;
+        // }
+        
+        // Player is never bust here.
+
+        if ($bankIsBust) {
+            return true;
+        }
+
+        // Noone is bust
+        
+        if ($playerScore > $bankScore) {
+            return true;
+        }
+
         return false;
     }
 }

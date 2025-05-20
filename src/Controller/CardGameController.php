@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Utils\CardSessionService;
 
 /**
  * Routing class for card game.
@@ -67,37 +68,64 @@ class CardGameController extends AbstractController
      * Draws a card
      */
     #[Route("/card/deck/draw", name: "card_draw")]
+    // public function draw(
+    //     SessionInterface $session
+    // ): Response {
+        
+    //     /** @var ?CardsDeck $deck */
+    //     $deck = $session->get("current_deck");
+        
+    //     if (!$deck || $deck->deckSize() == 0) {
+    //         $deck = new CardsDeck();
+    //         $deck->fillDeck();
+    //         $deck->shuffle();
+    //         $session->set("current_deck", $deck);
+    //     }
+
+    //     if (!$session->get("removed_cards")) {
+    //         $session->set("removed_cards", []);
+    //     }
+
+    //     if ($session->get("last_removed")) {
+    //         /** @var array<array{suit: string, rank: string}> */
+    //         $drawnCardVal = $session->get("last_removed");
+    //         // $drawnCard = new CardGraphic($drawnCardVal['suit'], $drawnCardVal['rank']) ?? null;
+    //         $deckOfLastRemoved = new CardsDeck();
+    //         $deckOfLastRemoved->createFromArray($drawnCardVal);
+    //     }
+        
+    //     /** @var CardsDeck $deck */
+    //     $deck = $session->get("current_deck");
+
+    //     /** @var array<array{suit: string, rank: string}> */
+    //     $removedCardsList = $session->get("removed_cards");
+
+    //     $allRemovedCards = new CardsDeck();
+    //     $allRemovedCards->createFromArray($removedCardsList);
+
+    //     $data = [
+    //         'deckSize' => $deck->deckSize(),
+    //         'deck' => $deck->getCardsFromDeck(),
+    //         'removed' => $allRemovedCards->getCardsFromDeck(),
+    //         'drawn' => isset($deckOfLastRemoved) ? $deckOfLastRemoved->getCardsFromDeck() : null
+    //     ];
+
+    //     return $this->render('game/card/draw.html.twig', $data);
+    // }
     public function draw(
+        CardSessionService $cardSession,
         SessionInterface $session
-    ): Response {
-        
-        /** @var ?CardsDeck $deck */
-        $deck = $session->get("current_deck");
-        
-        if (!$deck || $deck->deckSize() == 0) {
-            $deck = new CardsDeck();
-            $deck->fillDeck();
-            $deck->shuffle();
-            $session->set("current_deck", $deck);
-        }
-
-        if (!$session->get("removed_cards")) {
-            $session->set("removed_cards", []);
-        }
-
-        if ($session->get("last_removed")) {
-            /** @var array<array{suit: string, rank: string}> */
-            $drawnCardVal = $session->get("last_removed");
-            // $drawnCard = new CardGraphic($drawnCardVal['suit'], $drawnCardVal['rank']) ?? null;
-            $deckOfLastRemoved = new CardsDeck();
-            $deckOfLastRemoved->createFromArray($drawnCardVal);
-        }
+        ): Response {
         
         /** @var CardsDeck $deck */
-        $deck = $session->get("current_deck");
+        $deck = $cardSession->getDeck($session);
+
+        
+        /** @var CardsDeck $deck */
+        $deckOfLastRemoved = $cardSession->getLastRemovedCard($session);
 
         /** @var array<array{suit: string, rank: string}> */
-        $removedCardsList = $session->get("removed_cards");
+        $removedCardsList = $cardSession->getRemovedCards($session);
 
         $allRemovedCards = new CardsDeck();
         $allRemovedCards->createFromArray($removedCardsList);

@@ -22,7 +22,7 @@ class QuoteApiController extends AbstractController
     public function jsonQuotes(): Response
     {
         $quoteContent = file_get_contents('data/quotes.json');
-        if ($quoteContent == false) {
+        if ($quoteContent === false) {
             throw new RuntimeException("Quotes not found");
         }
         /** @var array{quotes: array<string>} */

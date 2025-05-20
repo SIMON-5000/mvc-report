@@ -95,7 +95,7 @@ class CardsDeck
     /**
      * Draws one or more cards.
      * @param int $number
-     * @return list<array{rank: string, suit: string}>
+     * @return array<array{rank: string, suit: string}>
      */
     public function draw(int $number = 1): array
     {
@@ -127,17 +127,6 @@ class CardsDeck
 
         return $drawn;
     }
-
-    // public function saveDeck(): array
-    // {
-    //     $currentDeck = [];
-
-    //     foreach ($this->deck as $card) {
-    //         $currentDeck[] = $card->getValue();
-    //     }
-
-    //     return $currentDeck;
-    // }
 
     /**
      * Gets deck as string values
