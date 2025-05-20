@@ -1,0 +1,111 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Metrics
+{% endblock %}
+
+{% block main %}
+
+    <h2>Att mäta kod</h2>
+
+    <p>
+    Hur kan vi mäta kodkvalitet? Till viss del handlar det om tycke och smak, men
+    Vi kommer här att använda oss av 6 stycken mätbara koncept. Vars namn all börjar på C.
+    </p>
+    
+    <h3>De sex C:na</h3>
+    
+    <h4>1. Codestyle</h4>
+    <p>
+        Det finns standarder, praxis och vad som anses som god sed när det kommer till hur man skall skriva sin kod. Det kan handla om namngivning, kodens struktur och även kommentering.
+        
+        När vi skriver kod för Symfony bör vi förhålla oss till <a href="https://www.php-fig.org/psr/">PHP Standards Recommendations</a> - 1, 2, 4 och 12[1].
+        Till vår hjälp kan vi använda verktyget PHP Coding Standards Fixer, verktyget påpekar brister och kan även rätta till dem.
+        Vidare tar vi även hjälp av PHPStan och PHP Mess Detector som läser vår kod och kan hitta fel och brister.
+    </p>
+    <h4>2. Complexity</h4>
+    <p>
+        En klass eller metods <b>cyclomatic complexity</b> mäts genom att räkna antalet kontrollflödes-satser. Ju fler if, else if, while etc. som finns - desto högre CC-värde får den.
+        En modul bör <em>generellt</em> ej överstiga 10 i cyclomatic complexity. Vissa metoder behöver göra komplexa beräkningar och det kan vara OK med en kommentar om varför CC-värdet är högt, om man ändå är mån om att hålla nere sitt CC-värde kan det vara läge att dela upp metoden i delar.
+    </p>
+    <h4>3. Coupling</h4>
+    <p>
+        När en klass är beroende av en annan (Efferent coupling), eller om andra klasser är beroende av klassen i fråga (Afferent coupling) minskar det klassens självständighet. 
+        Man eftersträvar lös koppling mellan klasser för att göra de olika modulerna stabila och självständiga. Om man gör ändringar i en klass som andra förlitar sig på så är det 
+        större risk för problem, och din applikation anses mindre stabil.
+        </p>
+    <h4>4. Cohesion</h4>
+    <p>
+        En klass ska sköta ha ett ansvarsområde. Om det ligger metoder för avvikande uppgifter ger det högre värde på LCOM (Lack of cohesive methods).
+        Om man kan identifiera ett separat ansvarsområde för de avvikande metoderna bör man bryta ut dessa och skapa en separat klass.
+    </p>
+    <h4>5. Coverage</h4>
+    <p>
+        Detta mätvärde beskriver hur stor del av koden som körs av ett kodtest. Det indikerar att koden är stabil och fungerar. Men det beror naturligtvis på testernas kvalitet.
+    </p>
+    <h4>6. C.R.A.P. - Change Risk Anti Pattern</h4>
+    <p>
+        Detta är ett mätvärde baserat på komplexitet i förhållande till testning.
+        Man kan behöva vissa komplexa delar i en applikation, detta ger ett högre CRAP-värde då det anses riskabelt att göra ändringar i dem.
+        Men om de är vältestade är det större sannolikhet att de trots komplexiteten är stabila och det belönas med ett sänkt CRAP-värde. Man bör hålla CRAP-värdet under 30.
+    </p>
+
+    <hr>
+    <h2>Analys</h2>
+    <h3>PhpMetrics</h3>
+    <div class="flex-row">
+        <p>
+            När jag undersöker min kods metrik med PHPUnit hittar jag följande:
+            <br><br>
+
+            Min klass för att hantera spelet tjugoett har 11 i CC, varav 7 i en metod. CC-värdet skall helst ligga under 10 per klass. 
+            Jag skall försöka förenkla den metoden.
+            <br><br>
+            
+            Två av mina klasser har problem med Coupling och Cohesion, det ger dem status "God Class", låter bra men är dåligt. 
+            Namnet "god class/object" kommer från att klassen "vet allt", använder många externa klasser. Samt att det har metoder som sköter olika uppgifter relaterade till dessa klasser[2].
+            Detta strider mot Single Responsibility mönstret. Här får jag dela upp dem.
+            <br><br>
+            Jag har 4 klasser som teoretiskt har buggar, detta kanske kan avhjälpas med testning och att i något fall ändra beskrivning av typer.
+            <br><br>
+            Vidare anklagas tre klasser bryta mot: <i>Stable Abstractions Principle</i>, det måste också undersökas.
+            <br><br>
+            De röda plupparna representerar några av mina controller-klasser, att testa controllers med WebTestCase verkar i teorin spännande. Vi får se hur det går.
+        </p>
+        <img src="{{ asset('img/metrics/phpMet_maintain_complex.png') }}" alt="Coloured circles representing the Maintainability and complexity of the code" height="300" class="right">
+    </div>
+    <h3>Scrutinizer</h3>
+    <div class="flex-row">
+        <img src="{{ asset('img/metrics/scrutti.png') }}" alt="Scrutinizer score" height="200" class="left">
+        <p>
+            Min kod får det generella betyget 9.89, och kodtäckning på 26% från enhetstester.
+            Mina tre sämsta klasser har betyget B (på skalan A till F) på grund av att de är för långa och har för hög komplexitet.
+            Scrutinizer hittar även 5 issues i min kod, dessa verkar bero på att jag satt typer felaktigt i mina försök att tilfredställa PhpStan.
+            <br><br>
+            <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer badge showing score">
+            <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/coverage.png?b=main" alt="Scrutinizer badge showing coverage">
+            <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/build.png?b=main" alt="Scrutinizer badge showing build">
+        </p>
+    </div>
+
+    <hr>
+    
+    <h2>Förbättringar</h2>
+    <ul>
+        <li>Jag vill minska komplexiteten i den funktion som sticker ut för att få ner CC-värdet till eller under den rekommenderade gränsen på 10.</li>
+        <li>Bryta upp klasserna som beskrivs som "god object" och skapa mer enhetliga mindre klasser för att göra koden mer logisk och lättare att underhålla.</li>
+        <li>Undersöka och rätta till alla direkta buggar och issues. Sådana skall vi inte ha.</li>
+        <li>Gällande testning och kodtäckning skall jag förbättra den för att minska komplexitet och göra koden mer stabil och lättare att underhålla.</li>
+    </li>
+    
+    
+    <h3>Lögn, förbannad lögn och mjukvarumetrik.</h3>
+    
+    CardGameController får CRAP score 8 i PhpMetrics men scrutinizer
+
+    App\Card\Game21Handler WMC-värde på 21 och ett CC på 11.
+    
+    
+    [1]https://symfony.com/doc/current/contributing/code/standards.html
+    [2] https://en.wikipedia.org/wiki/God_object
+{% endblock %}

@@ -1,0 +1,8 @@
+@use 'helpers' as *;
+
+.flex-row {
+  @include flex-center(row);
+  gap: $space-m;
+  justify-content: flex-start;
+  margin-bottom: $space-m;
+}

@@ -41,6 +41,9 @@
                         name="hold"
                         value="Stanna"
                         onClick="this.form.action='{{ path('game21_banks_turn') }}';"
+                        {% if playerScore >= 22 %}
+                            disabled
+                        {% endif %}
                     >
                     <input
                         class="btn card-btn restart-game-btn"

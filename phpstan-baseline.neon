@@ -1,54 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Cannot call method deckSize\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: src/Controller/ApiController.php
-
-		-
-			message: '#^Cannot call method getValues\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: src/Controller/ApiController.php
-
-		-
-			message: '#^Method App\\Controller\\ApiController\:\:getDeck\(\) should return App\\Card\\CardsDeck but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Controller/ApiController.php
-
-		-
-			message: '#^Cannot call method deckSize\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 4
-			path: src/Controller/CardGameController.php
-
-		-
-			message: '#^Cannot call method draw\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: src/Controller/CardGameController.php
-
-		-
-			message: '#^Cannot call method getCardsFromDeck\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: src/Controller/CardGameController.php
-
-		-
-			message: '#^Parameter \#1 \$cardsList of method App\\Card\\CardsDeck\:\:createFromArray\(\) expects array\<array\{suit\: string, rank\: string\}\>, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Controller/CardGameController.php
-
-		-
-			message: '#^Parameter \#1 \.\.\.\$arrays of function array_merge expects array, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Controller/CardGameController.php
-
-		-
 			message: '#^Binary operation "\+" between mixed and \(float\|int\) results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
