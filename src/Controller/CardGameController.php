@@ -4,12 +4,10 @@ namespace App\Controller;
 
 use App\Card\Card;
 use App\Card\CardGraphic;
-use App\Card\CardDeck;
 use App\Card\CardsDeck;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
@@ -26,6 +24,7 @@ class CardGameController extends AbstractController
         $deck = new CardsDeck();
         $deck->fillDeck();
         $deck->shuffle();
+
         $data = [
             'card' => $card->getValue(),
             'graphic' => $cardGr->getAsCard(),
@@ -36,7 +35,7 @@ class CardGameController extends AbstractController
 
         return $this->render('game/card/card.html.twig', $data);
     }
-
+    
     #[Route("/card/deck", name: "card_deck")]
     public function deck(): Response
     {
@@ -64,17 +63,18 @@ class CardGameController extends AbstractController
         return $this->render('game/card/deck_shuffle.html.twig', $data);
     }
 
-    // #[Route("/card/deck/shuffle", name: "card_deck_shuffle_post", methods: ['POST'])]
-    // public function deckShuffleCallback(): Response
-    // {
-    //     return $this->redirectToRoute('card_deck_shuffle');
-    // }
-
+    /**
+     * Draws a card
+     */
     #[Route("/card/deck/draw", name: "card_draw")]
     public function draw(
         SessionInterface $session
     ): Response {
-        if (!$session->get("current_deck") || $session->get("current_deck")->deckSize() == 0) {
+        
+        /** @var ?CardsDeck $deck */
+        $deck = $session->get("current_deck");
+        
+        if (!$deck || $deck->deckSize() == 0) {
             $deck = new CardsDeck();
             $deck->fillDeck();
             $deck->shuffle();
@@ -86,17 +86,21 @@ class CardGameController extends AbstractController
         }
 
         if ($session->get("last_removed")) {
+            /** @var array<array{suit: string, rank: string}> */
             $drawnCardVal = $session->get("last_removed");
             // $drawnCard = new CardGraphic($drawnCardVal['suit'], $drawnCardVal['rank']) ?? null;
             $deckOfLastRemoved = new CardsDeck();
             $deckOfLastRemoved->createFromArray($drawnCardVal);
         }
-
+        
+        /** @var CardsDeck $deck */
         $deck = $session->get("current_deck");
+
+        /** @var array<array{suit: string, rank: string}> */
         $removedCardsList = $session->get("removed_cards");
+
         $allRemovedCards = new CardsDeck();
         $allRemovedCards->createFromArray($removedCardsList);
-
 
         $data = [
             'deckSize' => $deck->deckSize(),
@@ -111,7 +115,9 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/draw/post", name: "draw_post", methods: ['POST'])]
     public function drawCallback(SessionInterface $session): Response
     {
+        /** @var CardsDeck $deck */
         $deck = $session->get("current_deck");
+        /** @var array<array{suit: string, rank: string}> $removedCards */        
         $removedCards = $session->get("removed_cards");
         $drawn = $deck->draw();
 
@@ -136,8 +142,12 @@ class CardGameController extends AbstractController
     public function drawMany(
         int $num,
         SessionInterface $session
-    ): Response {
+    ): Response
+    {
+        /** @var CardsDeck $deck */
         $deck = $session->get("current_deck");
+        
+        /** @var array<array{suit: string, rank: string}> $removedCards */
         $removedCards = $session->get("removed_cards");
 
         if ($num > $deck->deckSize()) {

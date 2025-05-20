@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Repository\BookRepository;
-use App\Utils;
-use App\Utils\ControllerHelpers;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -116,27 +114,28 @@ final class BookController extends AbstractController
 
     /**
      * Updating a book
-     * Here using EntityManagerInterface
+     * Also possible to work with EntityManagerInterface
+     * EntityManagerInterface $entityManager,
      */
     #[Route('/library/book/update/{id}', name: 'update_book', methods: ["POST"])]
     public function updateBook(
         BookRepository $bookRepository,
-        ControllerHelpers $helpers,
-        EntityManagerInterface $entityManager,
+        ManagerRegistry $doctrine,
         Request $request,
         int $id
     ): Response {
-        $params = ['title', 'author', 'isbn', 'img'];
-        $formData = $helpers->getParamBag($request, $params);
+        $entityManager = $doctrine->getManager();
 
+        [$title, $author, $isbn, $img] = $request->request->all();
+    
         /** @var Book */
         $book = $bookRepository
             ->find($id);
 
-        $book->setTitle($formData['title']);
-        $book->setAuthor($formData['author']);
-        $book->setIsbn($formData['isbn']);
-        $book->setImg($formData['img']);
+        $book->setTitle($title);
+        $book->setAuthor($author);
+        $book->setIsbn($isbn);
+        $book->setImg($img);
 
         $entityManager->flush();
 
@@ -169,7 +168,6 @@ final class BookController extends AbstractController
         ManagerRegistry $doctrine,
         int $id
     ): Response {
-        // Try this method as well
         $entityManager = $doctrine->getManager();
         $book = $entityManager->getRepository(Book::class)->find($id);
 
@@ -183,33 +181,5 @@ final class BookController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('show_books');
-    }
-
-
-
-    // ----- API ROUTES -----
-
-    #[Route('/api/library', name: 'api_all_books')]
-    public function apiAllBooks(
-        BookRepository $bookRepository
-    ): Response {
-
-        $books = $bookRepository
-            ->findAll();
-
-        return $this->json($books, 200, [], ['json_encode_options' => JSON_PRETTY_PRINT]);
-    }
-
-    #[Route('/api/book/{id}', name: 'api_book_by_id')]
-    public function apiBookById(
-        BookRepository $bookRepository,
-        int $id
-    ): Response {
-
-        $book = $bookRepository
-            ->find($id);
-
-
-        return $this->json($book, 200, [], ['json_encode_options' => JSON_PRETTY_PRINT]);
     }
 }
