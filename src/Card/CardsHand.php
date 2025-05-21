@@ -44,7 +44,8 @@ class CardsHand
     }
 
     /**
-     * Calls calculate value and returns the hands total value. Ace is 14.
+     * Calls calculate value and returns the hands total value.
+     * Ace is counted as 14.
      * @return int
      */
     public function getHandValue(): int
@@ -57,6 +58,7 @@ class CardsHand
 
         return $this->calculateValue($ranks);
     }
+
     /**
      * Calculates combined value of cards in hand
      * @param array<string> $ranks Cards ranks: "5"=5, "Q"=12, "K"=13 etc.

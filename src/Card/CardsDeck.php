@@ -143,7 +143,7 @@ class CardsDeck
 
     /**
      * Gets deck as card symbols
-     * @return list<string>
+     * @return array<string>
      */
     public function getCardsFromDeck(): array
     {
