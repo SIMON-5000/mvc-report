@@ -112,16 +112,13 @@
                                 <section>
                                         <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/app.html">App</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-repository.html">Repository</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-utils.html">Utils</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    ProductRepository
+    CardSessionService
 
-        <span class="phpdocumentor-element__extends">
-        extends <abbr title="\Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository">ServiceEntityRepository</abbr>
-    </span>
     
             <div class="phpdocumentor-element__package">
             in package
@@ -139,9 +136,9 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Repository/ProductRepository.php"><a href="files/src-repository-productrepository.html"><abbr title="src/Repository/ProductRepository.php">ProductRepository.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/CardSessionService.php"><a href="files/src-utils-cardsessionservice.html"><abbr title="src/Utils/CardSessionService.php">CardSessionService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">9</span>
 
     </aside>
 
@@ -149,20 +146,6 @@
 
 
 
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/App-Repository-ProductRepository.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">extends</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
 
 
 
@@ -170,7 +153,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/App-Repository-ProductRepository.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Utils-CardSessionService.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -185,15 +168,37 @@
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/App-Repository-ProductRepository.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Utils-CardSessionService.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-Repository-ProductRepository.html#method___construct">__construct()</a>
+    <a class="" href="classes/App-Utils-CardSessionService.html#method_getDeck">getDeck()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: <a href="classes/App-Card-CardsDeck.html"><abbr title="\App\Card\CardsDeck">CardsDeck</abbr></a>    </span>
 </dt>
+<dd>Returns active deck from session.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Utils-CardSessionService.html#method_getLastRemovedCard">getLastRemovedCard()</a>
+    <span>
+                                &nbsp;: <a href="classes/App-Card-CardsDeck.html"><abbr title="\App\Card\CardsDeck">CardsDeck</abbr></a>|null    </span>
+</dt>
+<dd>Gets last removed card or cards if more than one removed at the same time.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Utils-CardSessionService.html#method_getRemovedCards">getRemovedCards()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, array{suit: string, rank: string}&gt;    </span>
+</dt>
+<dd>Gets array of removed cards in string format.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Utils-CardSessionService.html#method_setRemovedCards">setRemovedCards()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Setter for removed cards.</dd>
 
     </dl>
 
@@ -206,7 +211,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/App-Repository-ProductRepository.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/App-Utils-CardSessionService.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -215,22 +220,74 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method___construct">
-        __construct()
-        <a href="classes/App-Repository-ProductRepository.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getDeck">
+        getDeck()
+        <a href="classes/App-Utils-CardSessionService.html#method_getDeck" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Repository/ProductRepository.php"><a href="files/src-repository-productrepository.html"><abbr title="src/Repository/ProductRepository.php">ProductRepository.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/CardSessionService.php"><a href="files/src-utils-cardsessionservice.html"><abbr title="src/Utils/CardSessionService.php">CardSessionService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Returns active deck from session.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$registry</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">getDeck</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$session</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardsDeck.html"><abbr title="\App\Card\CardsDeck">CardsDeck</abbr></a></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>If deck is not set or cards are out, it deals a new and resets removed.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$session</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardsDeck.html"><abbr title="\App\Card\CardsDeck">CardsDeck</abbr></a></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getLastRemovedCard">
+        getLastRemovedCard()
+        <a href="classes/App-Utils-CardSessionService.html#method_getLastRemovedCard" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/CardSessionService.php"><a href="files/src-utils-cardsessionservice.html"><abbr title="src/Utils/CardSessionService.php">CardSessionService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">68</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Gets last removed card or cards if more than one removed at the same time.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getLastRemovedCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$session</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardsDeck.html"><abbr title="\App\Card\CardsDeck">CardsDeck</abbr></a>|null</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -239,8 +296,113 @@
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$registry</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr></span>
+                <span class="phpdocumentor-signature__argument__name">$session</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardsDeck.html"><abbr title="\App\Card\CardsDeck">CardsDeck</abbr></a>|null</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getRemovedCards">
+        getRemovedCards()
+        <a href="classes/App-Utils-CardSessionService.html#method_getRemovedCards" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/CardSessionService.php"><a href="files/src-utils-cardsessionservice.html"><abbr title="src/Utils/CardSessionService.php">CardSessionService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">40</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Gets array of removed cards in string format.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getRemovedCards</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$session</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, array{suit: string, rank: string}&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$session</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, array{suit: string, rank: string}&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setRemovedCards">
+        setRemovedCards()
+        <a href="classes/App-Utils-CardSessionService.html#method_setRemovedCards" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/CardSessionService.php"><a href="files/src-utils-cardsessionservice.html"><abbr title="src/Utils/CardSessionService.php">CardSessionService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">54</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Setter for removed cards.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setRemovedCards</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$session</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, array{suit: string, rank: string}&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cards</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$session</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$cards</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, array{suit: string, rank: string}&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -259,7 +421,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Repository/ProductRepository.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Utils/CardSessionService.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -358,7 +520,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                <li><a href="classes/App-Repository-ProductRepository.html#toc-methods">Methods</a></li>
+                                                                                <li><a href="classes/App-Utils-CardSessionService.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
@@ -366,7 +528,10 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li class=""><a href="classes/App-Repository-ProductRepository.html#method___construct">__construct()</a></li>
+                                            <li class=""><a href="classes/App-Utils-CardSessionService.html#method_getDeck">getDeck()</a></li>
+                                            <li class=""><a href="classes/App-Utils-CardSessionService.html#method_getLastRemovedCard">getLastRemovedCard()</a></li>
+                                            <li class=""><a href="classes/App-Utils-CardSessionService.html#method_getRemovedCards">getRemovedCards()</a></li>
+                                            <li class=""><a href="classes/App-Utils-CardSessionService.html#method_setRemovedCards">setRemovedCards()</a></li>
                                     </ul>
             </li>
                     </ul>
@@ -386,7 +551,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/App-Repository-ProductRepository.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/App-Utils-CardSessionService.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

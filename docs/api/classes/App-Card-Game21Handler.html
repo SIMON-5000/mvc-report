@@ -196,6 +196,7 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Bank draws cards until a score of 17 is reached.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Game21Handler.html#method_calculate21Score">calculate21Score()</a>
@@ -215,7 +216,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Summary of getGame</dd>
+<dd>Gets all parts of the game</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Game21Handler.html#method_getGameDeck">getGameDeck()</a>
@@ -234,7 +235,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>If there is a draw, bank &quot;banken&quot; wins.</dd>
+<dd>If there is a draw, bank &quot;Banken&quot; wins.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Game21Handler.html#method_initGame">initGame()</a>
@@ -247,12 +248,21 @@
     <span>
                                 &nbsp;: bool    </span>
 </dt>
+<dd>Checks a hand if it is over 21 with possible Aces deducted.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Game21Handler.html#method_playerDraw">playerDraw()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Player draws a card</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/App-Card-Game21Handler.html#method_playerHasWon">playerHasWon()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Runs a controll to see if player has won.</dd>
 
     </dl>
 
@@ -369,11 +379,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Game21Handler.php"><a href="files/src-card-game21handler.html"><abbr title="src/Card/Game21Handler.php">Game21Handler.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">82</span>
+    <span class="phpdocumentor-element-found-in__line">89</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Bank draws cards until a score of 17 is reached.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">bankPlays</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -403,7 +414,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Game21Handler.php"><a href="files/src-card-game21handler.html"><abbr title="src/Card/Game21Handler.php">Game21Handler.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">109</span>
 
     </aside>
 
@@ -500,7 +511,7 @@
 
     </aside>
 
-        <p class="phpdocumentor-summary">Summary of getGame</p>
+        <p class="phpdocumentor-summary">Gets all parts of the game</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -611,11 +622,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Game21Handler.php"><a href="files/src-card-game21handler.html"><abbr title="src/Card/Game21Handler.php">Game21Handler.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">122</span>
+    <span class="phpdocumentor-element-found-in__line">129</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">If there is a draw, bank &quot;banken&quot; wins.</p>
+        <p class="phpdocumentor-summary">If there is a draw, bank &quot;Banken&quot; wins.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -729,11 +740,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Game21Handler.php"><a href="files/src-card-game21handler.html"><abbr title="src/Card/Game21Handler.php">Game21Handler.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">148</span>
+    <span class="phpdocumentor-element-found-in__line">153</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Checks a hand if it is over 21 with possible Aces deducted.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">isBust</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-CardsHand.html"><abbr title="\App\Card\CardsHand">CardsHand</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$hand</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
@@ -777,11 +789,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Game21Handler.php"><a href="files/src-card-game21handler.html"><abbr title="src/Card/Game21Handler.php">Game21Handler.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">68</span>
+    <span class="phpdocumentor-element-found-in__line">72</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Player draws a card</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">playerDraw</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -796,6 +809,64 @@
     
 
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_playerHasWon">
+        playerHasWon()
+        <a href="classes/App-Card-Game21Handler.html#method_playerHasWon" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Game21Handler.php"><a href="files/src-card-game21handler.html"><abbr title="src/Card/Game21Handler.php">Game21Handler.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">168</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Runs a controll to see if player has won.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">playerHasWon</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-CardsHand.html"><abbr title="\App\Card\CardsHand">CardsHand</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$playerHand</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-CardsHand.html"><abbr title="\App\Card\CardsHand">CardsHand</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bankHand</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Otherwise bank has won.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$playerHand</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-CardsHand.html"><abbr title="\App\Card\CardsHand">CardsHand</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$bankHand</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-CardsHand.html"><abbr title="\App\Card\CardsHand">CardsHand</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
             </section>
 
@@ -928,6 +999,7 @@
                                             <li class=""><a href="classes/App-Card-Game21Handler.html#method_initGame">initGame()</a></li>
                                             <li class=""><a href="classes/App-Card-Game21Handler.html#method_isBust">isBust()</a></li>
                                             <li class=""><a href="classes/App-Card-Game21Handler.html#method_playerDraw">playerDraw()</a></li>
+                                            <li class=""><a href="classes/App-Card-Game21Handler.html#method_playerHasWon">playerHasWon()</a></li>
                                     </ul>
             </li>
                     </ul>

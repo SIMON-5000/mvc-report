@@ -112,15 +112,15 @@
                                 <section>
                                         <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/app.html">App</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-repository.html">Repository</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-controller.html">Controller</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    ProductRepository
+    QuoteApiController
 
         <span class="phpdocumentor-element__extends">
-        extends <abbr title="\Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository">ServiceEntityRepository</abbr>
+        extends <abbr title="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">AbstractController</abbr>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -139,9 +139,9 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Repository/ProductRepository.php"><a href="files/src-repository-productrepository.html"><abbr title="src/Repository/ProductRepository.php">ProductRepository.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/QuoteApiController.php"><a href="files/src-controller-quoteapicontroller.html"><abbr title="src/Controller/QuoteApiController.php">QuoteApiController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">11</span>
 
     </aside>
 
@@ -149,20 +149,6 @@
 
 
 
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/App-Repository-ProductRepository.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">extends</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
 
 
 
@@ -170,7 +156,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/App-Repository-ProductRepository.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Controller-QuoteApiController.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -185,14 +171,14 @@
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/App-Repository-ProductRepository.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Controller-QuoteApiController.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-Repository-ProductRepository.html#method___construct">__construct()</a>
+    <a class="" href="classes/App-Controller-QuoteApiController.html#method_jsonQuotes">jsonQuotes()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr>    </span>
 </dt>
 
     </dl>
@@ -206,7 +192,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/App-Repository-ProductRepository.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/App-Controller-QuoteApiController.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -215,43 +201,54 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method___construct">
-        __construct()
-        <a href="classes/App-Repository-ProductRepository.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_jsonQuotes">
+        jsonQuotes()
+        <a href="classes/App-Controller-QuoteApiController.html#method_jsonQuotes" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Repository/ProductRepository.php"><a href="files/src-repository-productrepository.html"><abbr title="src/Repository/ProductRepository.php">ProductRepository.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/QuoteApiController.php"><a href="files/src-controller-quoteapicontroller.html"><abbr title="src/Controller/QuoteApiController.php">QuoteApiController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$registry</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">jsonQuotes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$registry</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
+    
     
 
     
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/App-Controller-QuoteApiController.html#method_jsonQuotes#attributes" class="headerlink"><i class="fas fa-link"></i></a>
 
-    
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        &quot;/api/quote&quot;
+    </dd>
+        <dd class="phpdocumentor-argument-list__entry">
+        $name: &quot;quote&quot;
+    </dd>
+    </dl>
+            </section>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span>
+            </section>
+
 </article>
             </section>
 
@@ -259,7 +256,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Repository/ProductRepository.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Controller/QuoteApiController.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -358,7 +355,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                <li><a href="classes/App-Repository-ProductRepository.html#toc-methods">Methods</a></li>
+                                                                                <li><a href="classes/App-Controller-QuoteApiController.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
@@ -366,7 +363,7 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li class=""><a href="classes/App-Repository-ProductRepository.html#method___construct">__construct()</a></li>
+                                            <li class=""><a href="classes/App-Controller-QuoteApiController.html#method_jsonQuotes">jsonQuotes()</a></li>
                                     </ul>
             </li>
                     </ul>
@@ -386,7 +383,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/App-Repository-ProductRepository.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/App-Controller-QuoteApiController.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

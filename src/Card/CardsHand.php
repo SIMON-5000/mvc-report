@@ -49,16 +49,13 @@ class CardsHand
      */
     public function getHandValue(): int
     {
-        $score = 0;
         $ranks = [];
 
         foreach ($this->hand as $card) {
             array_push($ranks, $card->getValue()["rank"]);
         }
 
-        $score = $this->calculateValue($ranks);
-
-        return $score;
+        return $this->calculateValue($ranks);
     }
     /**
      * Calculates combined value of cards in hand
