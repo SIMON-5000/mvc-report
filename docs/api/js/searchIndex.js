@@ -143,7 +143,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003AgetHandValue\u0028\u0029",
             "name": "getHandValue",
-            "summary": "Calls\u0020calculate\u0020value\u0020and\u0020returns\u0020the\u0020hands\u0020total\u0020value.\u0020Ace\u0020is\u002014.",
+            "summary": "Calls\u0020calculate\u0020value\u0020and\u0020returns\u0020the\u0020hands\u0020total\u0020value.",
             "url": "classes/App-Card-CardsHand.html#method_getHandValue"
         },                {
             "fqsen": "\\App\\Card\\CardsHand\u003A\u003AcalculateValue\u0028\u0029",

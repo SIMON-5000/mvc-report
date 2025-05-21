@@ -9,8 +9,7 @@
     <h2>Att mäta kod</h2>
 
     <p>
-    Hur kan vi mäta kodkvalitet? Till viss del handlar det om tycke och smak, men
-    Vi kommer här att använda oss av 6 stycken mätbara koncept. Vars namn all börjar på C.
+    Hur kan vi mäta kodkvalitet? Till viss del handlar det om tycke och smak, här kommer jag att använda mig av 6 stycken mätbara koncept vars namn alla börjar på C.
     </p>
     
     <h3>De sex C:na</h3>
@@ -81,31 +80,71 @@
             Min kod får det generella betyget 9.89, och kodtäckning på 26% från enhetstester.
             Mina tre sämsta klasser har betyget B (på skalan A till F) på grund av att de är för långa och har för hög komplexitet.
             Scrutinizer hittar även 5 issues i min kod, dessa verkar bero på att jag satt typer felaktigt i mina försök att tilfredställa PhpStan.
-            <br><br>
-            <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer badge showing score">
-            <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/coverage.png?b=main" alt="Scrutinizer badge showing coverage">
-            <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/build.png?b=main" alt="Scrutinizer badge showing build">
         </p>
     </div>
 
     <hr>
     
     <h2>Förbättringar</h2>
-    <ul>
+    <ul class="improvements">
         <li>Jag vill minska komplexiteten i den funktion som sticker ut för att få ner CC-värdet till eller under den rekommenderade gränsen på 10.</li>
         <li>Bryta upp klasserna som beskrivs som "god object" och skapa mer enhetliga mindre klasser för att göra koden mer logisk och lättare att underhålla.</li>
         <li>Undersöka och försöka rätta till alla direkta buggar och issues. Sådana skall vi inte ha.</li>
         <li>Gällande testning och kodtäckning skall jag förbättra den för att minska komplexitet och göra koden mer stabil och lättare att underhålla.</li>
-    </li>
-    
-    
-    <h3>Lögn, förbannad lögn och mjukvarumetrik.</h3>
-    
-    CardGameController får CRAP score 8 i PhpMetrics men scrutinizer
+    </ul>
+    <h3>Resultat</h3>
+        <div class="flex-row">
+        <p>
+            Jag lyckas få ner komplexiteten i min Game21Handler till 10 genom att flytta ut kommunikationen med session till en separat modul.
+            <br><br>
+            God object: ApiController var en modul för att samla alla API-routes,
+            vilket innebar att den var beroende av samtliga klasser med ett API.
+            Jag separerar dem till egna controller-filer med lägre  LCOM, och efferent coupling.
+            Bättre struktur och bättre metrik.
+            <br><br>
+            Exempelvis BookController var rödmarkerad som svår att underhålla och komplex.
+            Jag flyttar över uppdateringar och skapande av en ny bok till BookRepository, samt lägger till DocBlocks.
+            Detta gör den mer maintainable.
+            <br><br>
+            Jag ökar testningen till 35% (tidigare 26), jag väljer att testa en controller som anses komplex,
+            mest vill jag undersöka hur WebTestCase fungerar.
+            Mina tester där är av marginell nytta men jag får en inblick i hur controllers kan testas.
+            <br><br>
+            Issues: Jag kollar upp och rättar till alla utom en, de flesta issues är typ-beskrivningar som är fel,
+            Scrutinizer och PhpStan verkar ha olika uppfattningar om hur saker skall dokumenteras.
+            Stan föreslår t.ex.: <code>list<string></code>, Scrutinizer undrar då vad list är,
+            när jag ändrar till <code>array<string></code> gillas det av båda.
 
-    App\Card\Game21Handler WMC-värde på 21 och ett CC på 11.
+        </p>
+        <img src="{{ asset('img/metrics/phpMet_maintain_complex_after.png') }}" alt="Coloured circles representing the Maintainability and complexity of the code" height="300" class="right">
+    </div>
+
+    <div class="flex-row">
+        <img src="{{ asset('img/metrics/scrutti_after.png') }}" alt="Scrutinizer score" height="200" class="left">
+        <p>
+            Min kod får det generella betyget 9.96 (9.89), och kodtäckning på 35% (26%) från enhetstester.
+            <br><br>
+            <a href="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/">
+                <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer badge showing score">
+                <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/coverage.png?b=main" alt="Scrutinizer badge showing coverage">
+                <img src="https://scrutinizer-ci.com/g/SIMON-5000/mvc-report/badges/build.png?b=main" alt="Scrutinizer badge showing build">
+            </a>
+        </p>
+    </div>
+
+    <h2>Diskussion</h2>
+    <p>
+        PhpMetrics och Scrutinizer är utmärkta verktyg för att visualisera kodbasen, 
+        ett bra sätt att se designprincipernas relation med min egen kod.
+        Man får en snabb överblick och ser direkt vart man kan börja att förbättra.
+        Ibland när jag refaktoriserar flyttar jag bara problemen från en modul till en annan
+        och det finns en risk att man jagar gröna "pluppar" och badges. Kanske på bekostnad av vad som är logiskt och lättläst för oss människor. 
+        Om man jobbar på större projekt med en grupp utvecklare måste det nästan vara nödvändigt
+        att använda verktyg som dessa för att hålla en bra nivå och att koden skall vara enkel att bygga vidare på.
+    </p>
+
     
     
-    [1]https://symfony.com/doc/current/contributing/code/standards.html
+    [1]https://symfony.com/doc/current/contributing/code/standards.html<br>
     [2] https://en.wikipedia.org/wiki/God_object
 {% endblock %}
