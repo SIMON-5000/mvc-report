@@ -130,7 +130,7 @@ class CardsDeck
 
     /**
      * Gets deck as string values
-     * @return list<array<string, string>>
+     * @return array<array{suit: string, rank: string}>
      */
     public function getValues(): array
     {
@@ -143,7 +143,7 @@ class CardsDeck
 
     /**
      * Gets deck as card symbols
-     * @return array<string>
+     * @return array<CardGraphic>
      */
     public function getCardsFromDeck(): array
     {

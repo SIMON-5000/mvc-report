@@ -44,7 +44,7 @@ class CardsHand
     }
 
     /**
-     * Calls calculate value and returns the hands value.
+     * Calls calculate value and returns the hands total value. Ace is 14.
      * @return int
      */
     public function getHandValue(): int
