@@ -52,11 +52,11 @@ final class CardGameControllerTest extends WebTestCase
     //     $client = static::createClient();
     //     $session = self::getContainer()->get('session.factory')->createSession();
 
-    //     $deck = new CardsDeck();    
+    //     $deck = new CardsDeck();
     //     $deck->fillDeck();
     //     $deck->shuffle();
     //     var_dump($deck);
-    
+
     //     $session->set('current_deck', $deck);
     //     var_dump($session->get('current_deck'));
     //     $session->set('removed_cards', []);

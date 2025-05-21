@@ -33,8 +33,7 @@ class BookRepository extends ServiceEntityRepository
         string $author,
         string $isbn,
         string $img
-        ): void
-    {
+    ): void {
         /** @var Book */
         $book = $this
             ->find($id);
@@ -54,7 +53,7 @@ class BookRepository extends ServiceEntityRepository
      * @param string $img
      * @return void
      */
-    public function createBook(string $title, string $author, string $isbn, string $img='book.png'): void 
+    public function createBook(string $title, string $author, string $isbn, string $img = 'book.png'): void
     {
         $book = new Book();
         $book->setTitle($title);

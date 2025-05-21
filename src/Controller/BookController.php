@@ -38,7 +38,7 @@ final class BookController extends AbstractController
         // $img = strval($request->request->get('img'));
 
         $bookRepository->createBook($title, $author, $isbn);
-        
+
         $entityManager = $doctrine->getManager();
 
         // $book = new Book();
@@ -132,7 +132,7 @@ final class BookController extends AbstractController
         $author = strval($request->request->get('author'));
         $isbn = strval($request->request->get('isbn'));
         $img = strval($request->request->get('img'));
-    
+
         $bookRepository->updateBook($id, $title, $author, $isbn, $img);
 
         $entityManager->flush();

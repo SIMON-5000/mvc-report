@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class BookApiController extends AbstractController
 {
-
     #[Route('/api/library', name: 'api_all_books')]
     public function apiAllBooks(
         BookRepository $bookRepository

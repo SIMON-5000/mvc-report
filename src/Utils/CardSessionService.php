@@ -2,7 +2,6 @@
 
 namespace App\Utils;
 
-
 use App\Card\CardsDeck;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -54,8 +53,7 @@ class CardSessionService
     public function setRemovedCards(
         SessionInterface $session,
         array $cards
-        ): void
-    {
+    ): void {
         $session->set("removed_cards", $cards);
         $session->set("last_removed", $cards);
     }
@@ -68,7 +66,7 @@ class CardSessionService
     public function getLastRemovedCard(SessionInterface $session): ?CardsDeck
     {
         $deckOfLastRemoved = null;
-        
+
         if ($session->get("last_removed")) {
             /** @var array<array{suit: string, rank: string}> */
             $drawnCardVal = $session->get("last_removed");

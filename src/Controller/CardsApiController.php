@@ -36,7 +36,7 @@ class CardsApiController extends AbstractController
         /** @var CardsDeck $deck */
         return $deck;
     }
-    
+
     #[Route("/api/deck", name:"api_deck")]
     public function apiDeck(): Response
     {

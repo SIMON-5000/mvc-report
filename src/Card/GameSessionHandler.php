@@ -14,8 +14,7 @@ class GameSessionHandler
      */
     public function getPlayerHand(
         SessionInterface $session
-    ): CardsHand
-    {
+    ): CardsHand {
         /** @var CardsHand $playerHand */
         $playerHand = $session->get("playerHand");
 

@@ -137,7 +137,7 @@ class Game21Handler
             /** @var CardsHand */
             $bankHand = $this->session->get("bankHand");
         }
-        
+
         if ($this->playerHasWon($playerHand, $bankHand)) {
             return "Du";
         }
@@ -171,11 +171,11 @@ class Game21Handler
         $bankIsBust = $this->isBust($bankHand);
         $playerScore = $this->calculate21Score($playerHand);
         $bankScore = $this->calculate21Score($bankHand);
-        
+
         // if ($playerIsBust) {
         //     return false;
         // }
-        
+
         // Player is never bust here.
 
         if ($bankIsBust) {
@@ -183,7 +183,7 @@ class Game21Handler
         }
 
         // Noone is bust
-        
+
         if ($playerScore > $bankScore) {
             return true;
         }

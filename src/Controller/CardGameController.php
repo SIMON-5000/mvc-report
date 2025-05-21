@@ -36,7 +36,7 @@ class CardGameController extends AbstractController
 
         return $this->render('game/card/card.html.twig', $data);
     }
-    
+
     #[Route("/card/deck", name: "card_deck")]
     public function deck(): Response
     {
@@ -71,10 +71,10 @@ class CardGameController extends AbstractController
     // public function draw(
     //     SessionInterface $session
     // ): Response {
-        
+
     //     /** @var ?CardsDeck $deck */
     //     $deck = $session->get("current_deck");
-        
+
     //     if (!$deck || $deck->deckSize() == 0) {
     //         $deck = new CardsDeck();
     //         $deck->fillDeck();
@@ -93,7 +93,7 @@ class CardGameController extends AbstractController
     //         $deckOfLastRemoved = new CardsDeck();
     //         $deckOfLastRemoved->createFromArray($drawnCardVal);
     //     }
-        
+
     //     /** @var CardsDeck $deck */
     //     $deck = $session->get("current_deck");
 
@@ -115,12 +115,12 @@ class CardGameController extends AbstractController
     public function draw(
         CardSessionService $cardSession,
         SessionInterface $session
-        ): Response {
-        
+    ): Response {
+
         /** @var CardsDeck $deck */
         $deck = $cardSession->getDeck($session);
 
-        
+
         /** @var CardsDeck $deck */
         $deckOfLastRemoved = $cardSession->getLastRemovedCard($session);
 
@@ -145,7 +145,7 @@ class CardGameController extends AbstractController
     {
         /** @var CardsDeck $deck */
         $deck = $session->get("current_deck");
-        /** @var array<array{suit: string, rank: string}> $removedCards */        
+        /** @var array<array{suit: string, rank: string}> $removedCards */
         $removedCards = $session->get("removed_cards");
         $drawn = $deck->draw();
 
@@ -170,11 +170,10 @@ class CardGameController extends AbstractController
     public function drawMany(
         int $num,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         /** @var CardsDeck $deck */
         $deck = $session->get("current_deck");
-        
+
         /** @var array<array{suit: string, rank: string}> $removedCards */
         $removedCards = $session->get("removed_cards");
 
