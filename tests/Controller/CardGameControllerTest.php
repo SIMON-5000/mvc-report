@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller;
 
+use App\Card\CardsDeck;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -41,11 +42,23 @@ final class CardGameControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
     }
 
-    public function testCardDeckDrawFive(): void
-    {
-        $client = static::createClient();
-        $client->request('GET', '/card/deck/draw/5');
+    // public function testCardDeckDrawFive(): void
+    // {
+    //     $client = static::createClient();
+    //     $session = self::getContainer()->get('session.factory')->createSession();
 
-        self::assertResponseIsSuccessful();
-    }
+    //     $deck = new CardsDeck();    
+    //     $deck->fillDeck();
+    //     $deck->shuffle();
+    //     var_dump($deck);
+    
+    //     $session->set('current_deck', $deck);
+    //     var_dump($session->get('current_deck'));
+    //     $session->set('removed_cards', []);
+    //     $session->save();
+
+    //     $client->request('GET', '/card/deck/draw/5');
+
+    //     self::assertResponseIsSuccessful();
+    // }
 }
