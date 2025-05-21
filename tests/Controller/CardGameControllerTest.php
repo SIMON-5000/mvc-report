@@ -16,6 +16,7 @@ final class CardGameControllerTest extends WebTestCase
         $client->request('GET', '/card');
 
         self::assertResponseIsSuccessful();
+        $this->assertSelectorExists("img");
     }
 
     public function testCardDeck(): void
@@ -24,6 +25,7 @@ final class CardGameControllerTest extends WebTestCase
         $client->request('GET', '/card/deck');
 
         self::assertResponseIsSuccessful();
+        $this->assertSelectorExists(".playing-card");
     }
 
     public function testCardDeckShuffle(): void
@@ -32,6 +34,7 @@ final class CardGameControllerTest extends WebTestCase
         $client->request('GET', '/card/deck/shuffle');
 
         self::assertResponseIsSuccessful();
+        $this->assertSelectorExists(".playing-card");
     }
 
     public function testCardDeckDraw(): void
@@ -40,6 +43,8 @@ final class CardGameControllerTest extends WebTestCase
         $client->request('GET', '/card/deck/draw');
 
         self::assertResponseIsSuccessful();
+        $this->assertSelectorExists('input[type="submit"]');
+        $this->assertSelectorExists(".playing-card");
     }
 
     // public function testCardDeckDrawFive(): void
